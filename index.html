@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta name="naver-site-verification" content="3697c00e9023a94a44b7ef8da61d07afa7eb8d8c" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 투자 계산기 모음 - 켈리공식·평단가·복리·수익률·배당금 무료 계산기</title>
+    <meta name="description" content="켈리공식, 평단가(물타기), 복리, 주식 수익률, 배당금 계산기를 한 곳에서! 주식·코인 투자자를 위한 무료 자금관리 도구 모음입니다.">
+    <meta name="keywords" content="켈리공식 계산기, 평단가 계산기, 물타기 계산기, 복리 계산기, 주식 수익률 계산기, 배당금 계산기, 투자 계산기, 자금관리, Kelly Criterion Calculator, Average Price Calculator, Compound Interest Calculator, Dividend Calculator">
+    <meta name="author" content="KellyCalc">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1e40af">
+    <link rel="canonical" href="https://www.kellycalc.com/">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link rel="alternate" hreflang="ko" href="https://www.kellycalc.com/">
+    <link rel="alternate" hreflang="en" href="https://www.kellycalc.com/">
+    <link rel="alternate" hreflang="ja" href="https://www.kellycalc.com/">
+    <link rel="alternate" hreflang="zh" href="https://www.kellycalc.com/">
+    <link rel="alternate" hreflang="x-default" href="https://www.kellycalc.com/">
+    <meta property="og:title" content="🎯 투자 계산기 모음 - 켈리공식·평단가·복리·수익률·배당금">
+    <meta property="og:description" content="주식·코인 투자자를 위한 무료 계산기 모음! 켈리공식, 평단가, 복리, 수익률, 배당금 계산기를 한 곳에서 이용하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.kellycalc.com/">
+    <meta property="og:image" content="https://www.kellycalc.com/favicon.png">
+    <meta property="og:site_name" content="KellyCalc - Investment Calculator Suite">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Investment Calculator Suite | Kelly, Average Price, Compound, Profit, Dividend">
+    <meta name="twitter:description" content="Free investment calculators: Kelly Criterion, Average Price, Compound Interest, Profit Rate, Dividend.">
+    <meta name="twitter:image" content="https://www.kellycalc.com/favicon.png">
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8185075274382517" crossorigin="anonymous"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        /* ===== SITE NAV ===== */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            background: #ffffff;
+            border-bottom: 2px solid #3b82f6;
+            box-shadow: 0 2px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .site-nav-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 10px 0;
+            flex: 1;
+        }
+        .nav-tabs::-webkit-scrollbar { display: none; }
+
+        .nav-tab {
+            white-space: nowrap;
+            padding: 8px 14px;
+            border: 2px solid transparent;
+            background: #f8fafc;
+            color: #64748b;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .nav-tab:hover { background: #e0f2fe; color: #1e40af; border-color: #3b82f6; }
+        .nav-tab.active {
+            background: linear-gradient(45deg, #1e40af, #3b82f6);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+        }
+
+        /* ===== AD SPACES ===== */
+        .ad-space {
+            position: fixed;
+            top: 120px;
+            width: 160px;
+            height: 600px;
+            background: #ffffff;
+            z-index: 10;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ad-space.left { left: 20px; }
+        .ad-space.right { right: 20px; }
+        @media (max-width: 1200px) { .ad-space { display: none; } }
+
+        /* ===== PAGES ===== */
+        .page { display: block; }
+        .page.hidden { display: none; }
+
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: calc(100vh - 58px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-card {
+            background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid #1e40af;
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+        .main-card::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: linear-gradient(45deg, #60a5fa, #3b82f6, #1e40af);
+            border-radius: 21px;
+            z-index: -1;
+        }
+
+        /* ===== LANGUAGE ===== */
+        .language-select {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #3b82f6;
+            border-radius: 8px;
+            padding: 6px 10px;
+            font-size: 13px;
+            color: #1e40af;
+            font-weight: 600;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .language-select:focus { outline: none; border-color: #1e40af; }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1e40af;
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* ===== FORM ===== */
+        .input-group { margin-bottom: 20px; }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #1e40af;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid #3b82f6;
+            border-radius: 15px;
+            font-size: 16px;
+            background: linear-gradient(to right, #ffffff, #f8fafc);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+            font-weight: 500;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #1e40af;
+            background: #ffffff;
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FRACTION BUTTONS ===== */
+        .fraction-selector { margin-top: 8px; }
+        .fraction-label { display: block; margin-bottom: 8px; font-weight: 500; color: #1e40af; }
+        .fraction-buttons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+        .fraction-btn {
+            padding: 12px 10px;
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #1e40af;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .fraction-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 14px rgba(59,130,246,0.2); }
+        .fraction-btn.active {
+            background: linear-gradient(45deg, #1e40af, #3b82f6);
+            color: #ffffff;
+            border-color: #1e40af;
+            box-shadow: 0 6px 16px rgba(30,64,175,0.35);
+        }
+
+        /* ===== CALCULATE BUTTON ===== */
+        .calculate-btn {
+            width: 100%;
+            padding: 20px 40px;
+            background: linear-gradient(45deg, #1e40af, #3b82f6, #60a5fa);
+            color: white;
+            border: 3px solid transparent;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 30px 0 0 0;
+            box-shadow: 0 8px 25px rgba(30,64,175,0.4);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+        .calculate-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        .calculate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(30,64,175,0.5);
+            background: linear-gradient(45deg, #1e3a8a, #1e40af, #3b82f6);
+        }
+        .calculate-btn:hover::before { left: 100%; }
+        .calculate-btn:focus { outline: none; }
+
+        /* ===== ADD ROW (평단가) ===== */
+        .add-row-btn {
+            width: 100%;
+            padding: 12px;
+            background: #f0f9ff;
+            color: #1e40af;
+            border: 2px dashed #3b82f6;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 4px;
+        }
+        .add-row-btn:hover { background: #e0f2fe; border-style: solid; }
+
+        .buy-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 8px;
+            margin-bottom: 10px;
+            align-items: end;
+        }
+        .buy-row label { font-size: 13px; margin-bottom: 4px; }
+        .remove-row-btn {
+            padding: 15px 12px;
+            background: #fff1f2;
+            color: #e11d48;
+            border: 2px solid #fda4af;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 700;
+        }
+        .remove-row-btn:hover { background: #ffe4e6; border-color: #e11d48; }
+
+        /* ===== MODE TABS (복리) ===== */
+        .mode-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 24px; }
+        .mode-tab {
+            padding: 10px;
+            border: 2px solid #3b82f6;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #1e40af;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .mode-tab.active { background: linear-gradient(45deg, #1e40af, #3b82f6); color: white; border-color: transparent; }
+
+        /* ===== RESULTS ===== */
+        .result-section {
+            margin-top: 40px;
+            padding: 32px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid rgba(59,130,246,0.2);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.08);
+        }
+        .result-title { font-size: 18px; font-weight: 600; color: #1e40af; margin-bottom: 16px; }
+        .result-value { font-size: 32px; font-weight: 800; color: #3b82f6; margin-bottom: 20px; text-align: center; }
+        .result-value.positive { color: #059669; }
+        .result-value.negative { color: #e11d48; }
+        .result-meta { text-align: center; margin-top: -6px; margin-bottom: 16px; color: #475569; font-size: 13px; font-weight: 600; }
+
+        .result-extra-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+        .result-extra-card { background: #ffffff; border: 1px solid rgba(59,130,246,0.2); border-radius: 10px; padding: 14px; }
+        .result-extra-label { font-size: 12px; color: #64748b; margin-bottom: 6px; font-weight: 600; }
+        .result-extra-value { font-size: 20px; font-weight: 800; color: #1e40af; word-break: break-word; }
+        .result-extra-value.positive { color: #059669; }
+        .result-extra-value.negative { color: #e11d48; }
+
+        .calculation-process {
+            margin-top: 24px; padding: 24px;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid rgba(59,130,246,0.15);
+            box-shadow: 0 2px 8px rgba(59,130,246,0.05);
+        }
+        .calculation-process h4 { margin-bottom: 12px; color: #6c757d; font-size: 14px; font-weight: 600; }
+        .process-values { font-family: 'Courier New', monospace; font-size: 13px; color: #6c757d; line-height: 1.6; }
+
+        .leverage-warning {
+            background: linear-gradient(135deg, rgba(255,193,7,0.1), rgba(255,152,0,0.1));
+            border: 1px solid rgba(255,193,7,0.3);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 24px;
+            color: #856404;
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            margin-top: 40px; padding: 24px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 16px;
+            font-size: 13px; color: #6c757d; line-height: 1.6;
+            border: 1px solid rgba(102,126,234,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .hidden { display: none; }
+
+        /* ===== INFO SECTION ===== */
+        .info-section {
+            margin-top: 40px; padding: 32px;
+            background: #ffffff;
+            border-radius: 12px; line-height: 1.6;
+            border: 1px solid rgba(59,130,246,0.2);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.08);
+        }
+        .info-section h2 { color: #1e40af; font-size: 22px; margin-bottom: 20px; border-bottom: 3px solid #3b82f6; padding-bottom: 12px; font-weight: 700; }
+        .info-section h3 { color: #1e40af; font-size: 16px; margin: 24px 0 12px 0; font-weight: 600; }
+        .info-section p { color: #475569; margin-bottom: 16px; }
+        .info-section ol, .info-section ul { margin: 12px 0; padding-left: 20px; }
+        .info-section li { margin-bottom: 8px; color: #475569; }
+
+        .formula-box {
+            background-color: #f8fafc;
+            border: 1px solid rgba(59,130,246,0.2);
+            border-radius: 8px; padding: 16px; margin: 12px 0;
+            font-family: 'Courier New', monospace; text-align: center;
+        }
+        .formula-box strong { font-size: 18px; color: #3b82f6; }
+        .formula-box small {
+            display: block; margin-top: 12px; color: #475569;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            text-align: left; line-height: 1.4;
+        }
+
+        .warning-box {
+            background-color: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px; padding: 16px; margin-top: 24px;
+            color: #92400e; font-size: 14px;
+        }
+
+        /* ===== PAGE NAV LINKS ===== */
+        .page-nav { display: flex; justify-content: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+        .page-nav a {
+            color: #1e40af; text-decoration: none; font-weight: 600;
+            padding: 7px 14px; border-radius: 20px;
+            background: linear-gradient(45deg, #e0f2fe, #f0f9ff);
+            border: 1px solid #3b82f6; font-size: 13px;
+            transition: all 0.3s ease;
+        }
+        .page-nav a:hover { background: linear-gradient(45deg, #3b82f6, #1e40af); color: white; transform: translateY(-2px); }
+
+        /* ===== DESCRIPTION ===== */
+        .description {
+            text-align: center; padding: 15px; margin-bottom: 25px;
+            background: linear-gradient(45deg, #f0f9ff, #e0f2fe);
+            border-radius: 15px; color: #1e40af;
+            font-size: 15px; line-height: 1.4;
+            border: 1px solid #3b82f6; font-weight: 500;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.2);
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 480px) {
+            .container { padding: 16px; }
+            .main-card { padding: 30px 20px; }
+            h1 { font-size: 20px; margin-bottom: 24px; }
+            input[type="number"] { padding: 10px 12px; font-size: 16px; }
+            .calculate-btn { padding: 12px 20px; font-size: 16px; }
+            .result-value { font-size: 22px; }
+            .result-section { padding: 16px; }
+            .info-section { padding: 16px; margin-top: 32px; }
+            .info-section h2 { font-size: 18px; }
+            .fraction-buttons { grid-template-columns: 1fr; }
+            .result-extra-grid { grid-template-columns: 1fr; }
+            .buy-row { grid-template-columns: 1fr 1fr; }
+            .buy-row .remove-row-btn { grid-column: span 2; padding: 10px; }
+            .nav-tab { padding: 7px 10px; font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 사이드 광고 -->
+    <div class="ad-space left">
+        <ins class="adsbygoogle" style="display:block"
+             data-ad-client="ca-pub-8185075274382517"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+    <div class="ad-space right">
+        <ins class="adsbygoogle" style="display:block"
+             data-ad-client="ca-pub-8185075274382517"
+             data-ad-slot="1234567891"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </div>
+
+    <!-- 상단 네비게이션 -->
+    <nav class="site-nav" role="navigation" aria-label="계산기 메뉴">
+        <div class="site-nav-inner">
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-page="kelly" data-text-key="nav-kelly">🎯 켈리공식</button>
+                <button class="nav-tab" data-page="average" data-text-key="nav-average">📊 평단가</button>
+                <button class="nav-tab" data-page="compound" data-text-key="nav-compound">📈 복리</button>
+                <button class="nav-tab" data-page="profit" data-text-key="nav-profit">💰 수익률</button>
+                <button class="nav-tab" data-page="dividend" data-text-key="nav-dividend">💵 배당금</button>
+            </div>
+            <select id="languageSelect" class="language-select">
+                <option value="ko">한국어</option>
+                <option value="en">English</option>
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+            </select>
+        </div>
+    </nav>
+
+    <main id="main-content">
+
+    <!-- ============================= KELLY PAGE ============================= -->
+    <div id="page-kelly" class="page" role="main">
+        <div class="container">
+            <div class="main-card">
+                <h1 id="kellyTitle">Kelly 비율 계산기</h1>
+
+                <div class="page-nav">
+                    <a href="#kelly-calc" data-text-key="nav-calculator">계산기</a>
+                    <a href="#kelly-guide" data-text-key="nav-guide">공식 가이드</a>
+                    <a href="#kelly-tips" data-text-key="nav-tips">사용법 및 주의사항</a>
+                </div>
+
+                <div class="description" data-text-key="description">
+                    🎯 주식, 코인, 베팅에서 얼마나 투자해야 할지 과학적으로 계산해드립니다!
+                </div>
+
+                <div id="kelly-calc">
+                    <form id="kellyForm">
+                        <div class="input-group">
+                            <label for="winRate" data-text-key="label-winrate">승률 P (%)</label>
+                            <input type="number" id="winRate" data-placeholder-key="placeholder-winrate" placeholder="70" min="0" max="100" step="0.01" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="profitRate" data-text-key="label-profit">순수익률 B (%)</label>
+                            <input type="number" id="profitRate" data-placeholder-key="placeholder-profit" placeholder="100" min="0" step="0.01" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="lossRate" data-text-key="label-loss">손실률 A (%)</label>
+                            <input type="number" id="lossRate" data-placeholder-key="placeholder-loss" placeholder="50" min="0" max="100" step="0.01" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="capitalAmount" id="capitalLabel">총 자본 (선택)</label>
+                            <input type="number" id="capitalAmount" placeholder="1000000" min="0" step="0.01">
+                        </div>
+                        <div class="input-group fraction-selector">
+                            <span class="fraction-label" id="fractionLabel">Fractional Kelly</span>
+                            <div class="fraction-buttons">
+                                <button type="button" class="fraction-btn active" data-fraction="1">100%</button>
+                                <button type="button" class="fraction-btn" data-fraction="0.5">50%</button>
+                                <button type="button" class="fraction-btn" data-fraction="0.25">25%</button>
+                            </div>
+                        </div>
+                        <button type="submit" class="calculate-btn" data-text-key="calculate-btn">켈리 비율 계산</button>
+                    </form>
+
+                    <div id="kellyResultSection" class="result-section hidden">
+                        <div class="result-title" id="kellyResultTitle">추천 투자 비율</div>
+                        <div id="kellyResultValue" class="result-value"></div>
+                        <div id="kellyResultMeta" class="result-meta"></div>
+                        <div class="result-extra-grid">
+                            <div class="result-extra-card">
+                                <div id="breakEvenLabel" class="result-extra-label">손익분기 승률</div>
+                                <div id="breakEvenWinRate" class="result-extra-value">-</div>
+                            </div>
+                            <div id="amountCard" class="result-extra-card hidden">
+                                <div id="amountLabel" class="result-extra-label">추천 투자금액</div>
+                                <div id="recommendedAmount" class="result-extra-value">-</div>
+                            </div>
+                        </div>
+                        <div class="calculation-process">
+                            <h4>계산 과정</h4>
+                            <div id="kellyProcessValues" class="process-values"></div>
+                        </div>
+                        <div id="leverageWarning" class="leverage-warning hidden"></div>
+                    </div>
+                </div>
+
+                <div class="disclaimer" data-text-key="disclaimer">
+                    <strong>※ 본 계산기는 켈리 공식의 수학식 그대로를 적용합니다.</strong><br>
+                    실제 투자에서는 일반적으로 계산값의 25 ~ 50%만 사용합니다.<br><br>
+                    <em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>
+                </div>
+
+                <div id="kelly-guide" class="info-section">
+                    <h2 data-text-key="formula-title">켈리 공식이란?</h2>
+                    <p data-text-key="formula-intro">켈리 공식(Kelly Criterion)은 1956년 존 켈리(John Kelly)가 개발한 수학적 베팅 전략으로, 장기적으로 자본을 최대화하는 최적의 베팅 크기를 계산하는 공식입니다.</p>
+                    <h3 data-text-key="formula-explanation">📊 공식 설명</h3>
+                    <div class="formula-box">
+                        <strong>f = p/a - q/b</strong><br>
+                        <small data-text-key="formula-variables">
+                            • f = 총 자본 대비 베팅 비율<br>
+                            • p = 승률 (이길 확률)<br>
+                            • q = 패률 (질 확률 = 1-p)<br>
+                            • a = 손실률 (질 때 잃는 비율)<br>
+                            • b = 수익률 (이길 때 얻는 비율)
+                        </small>
+                    </div>
+                    <h3 data-text-key="usage-method">🎯 사용 방법</h3>
+                    <ol data-text-key="usage-steps">
+                        <li><strong>승률(P)</strong>: 과거 데이터를 바탕으로 성공 확률을 추정</li>
+                        <li><strong>순수익률(B)</strong>: 성공 시 얻는 수익의 비율 (예: 100% 수익 → 100 입력)</li>
+                        <li><strong>손실률(A)</strong>: 실패 시 잃는 손실의 비율 (예: 50% 손실 → 50 입력)</li>
+                        <li>계산된 비율이 투자 권장 비율입니다</li>
+                    </ol>
+                    <h3 id="kelly-tips" data-text-key="precautions">⚠️ 중요한 주의점</h3>
+                    <ul data-text-key="precautions-list">
+                        <li><strong>확률 추정의 어려움</strong>: 실제 투자에서 정확한 승률과 수익률 예측은 매우 어렵습니다</li>
+                        <li><strong>변동성 고려</strong>: 켈리 공식은 변동성을 직접 고려하지 않으므로 계산값의 25-50%만 사용하는 것이 안전합니다</li>
+                        <li><strong>자금 관리</strong>: 분산 투자로 전체 자본을 한 번에 잃지 않도록 주의하세요</li>
+                        <li><strong>심리적 요인</strong>: 계산된 비율이 높아도 개인의 위험 감수 능력을 고려해야 합니다</li>
+                    </ul>
+                    <h3 data-text-key="practical-tips">💡 실제 적용 팁</h3>
+                    <ul data-text-key="practical-tips-list">
+                        <li>계산 결과가 25%라면, 실제로는 6-12% 정도로 시작해보세요</li>
+                        <li>처음에는 보수적으로 접근하고 점진적으로 조정하세요</li>
+                        <li>절대 빌린 돈이나 생활비로 투자하지 마세요</li>
+                        <li>여러 투자 기회에 분산하여 위험을 줄이세요</li>
+                    </ul>
+                    <div class="warning-box" data-text-key="final-disclaimer">
+                        <strong>⚠️ 면책 조항</strong><br>
+                        이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다.
+                        모든 투자에는 손실 위험이 있으며, 투자 결정은 본인의 책임입니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================= 평단가 PAGE ============================= -->
+    <div id="page-average" class="page hidden">
+        <div class="container">
+            <div class="main-card">
+                <h1 data-text-key="avg-title">평단가 계산기 (물타기)</h1>
+                <div class="description" data-text-key="avg-desc">
+                    📊 분할매수(물타기) 시 평균 매수가를 계산합니다. 매수 내역을 추가해 계산하세요.
+                </div>
+
+                <form id="averageForm">
+                    <div id="buyRows"></div>
+                    <button type="button" class="add-row-btn" id="addRowBtn" data-text-key="avg-add-row">+ 매수 내역 추가</button>
+                    <button type="submit" class="calculate-btn" data-text-key="avg-calc-btn">평단가 계산</button>
+                </form>
+
+                <div id="averageResultSection" class="result-section hidden">
+                    <div class="result-title" data-text-key="avg-result-title">새 평균 매수가</div>
+                    <div id="averageResultValue" class="result-value"></div>
+                    <div class="result-extra-grid">
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="avg-qty-label">총 보유 수량</div>
+                            <div id="avgTotalQty" class="result-extra-value">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="avg-invest-label">총 투자금액</div>
+                            <div id="avgTotalInvest" class="result-extra-value">-</div>
+                        </div>
+                    </div>
+                    <div class="calculation-process">
+                        <h4 data-text-key="avg-calc-detail">계산 내역</h4>
+                        <div id="averageProcessValues" class="process-values"></div>
+                    </div>
+                </div>
+
+                <div class="disclaimer" data-text-key="avg-disclaimer">
+                    <em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>
+                </div>
+
+                <div class="info-section">
+                    <h2 data-text-key="avg-info-h2">평단가(물타기) 계산기란?</h2>
+                    <p data-text-key="avg-info-p">평단가 계산기는 여러 번에 나누어 매수할 때 평균 매수가격을 계산하는 도구입니다. 주가가 하락했을 때 추가 매수하여 평균 단가를 낮추는 전략에 활용됩니다.</p>
+                    <h3 data-text-key="avg-formula-h3">📊 공식 설명</h3>
+                    <div class="formula-box">
+                        <strong>평단가 = 총 투자금액 ÷ 총 보유 수량</strong><br>
+                        <small>
+                            • 총 투자금액 = Σ(각 매수가 × 각 수량)<br>
+                            • 총 보유 수량 = Σ(각 수량)
+                        </small>
+                    </div>
+                    <h3 data-text-key="avg-warning-h3">⚠️ 물타기 주의사항</h3>
+                    <ul data-text-key="avg-warning-list">
+                        <li><strong>손실 확대 위험</strong>: 하락이 계속되면 추가 투자금도 손실이 발생합니다</li>
+                        <li><strong>비중 과도</strong>: 한 종목에 너무 많은 비중을 실으면 분산투자 효과가 사라집니다</li>
+                        <li><strong>펀더멘털 확인</strong>: 단순히 싸다는 이유만으로 추가 매수하지 말고, 기업 가치를 재확인하세요</li>
+                        <li><strong>손절 기준</strong>: 물타기 전 반드시 손절 기준을 정해두세요</li>
+                    </ul>
+                    <div class="warning-box" data-text-key="avg-disc-box">
+                        <strong>⚠️ 면책 조항</strong><br>
+                        이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================= 복리 PAGE ============================= -->
+    <div id="page-compound" class="page hidden">
+        <div class="container">
+            <div class="main-card">
+                <h1 data-text-key="comp-title">복리 계산기 (거치식·적립식)</h1>
+                <div class="description" data-text-key="comp-desc">
+                    📈 거치식 또는 적립식 복리 수익을 계산합니다. 투자금, 수익률, 기간을 입력하세요.
+                </div>
+
+                <div class="mode-tabs">
+                    <button class="mode-tab active" data-mode="lump" data-text-key="comp-mode-lump">거치식</button>
+                    <button class="mode-tab" data-mode="dca" data-text-key="comp-mode-dca">적립식 (월납입)</button>
+                </div>
+
+                <form id="compoundForm">
+                    <div id="lumpSection">
+                        <div class="input-group">
+                            <label for="compoundPrincipal" data-text-key="comp-label-principal">원금 (원)</label>
+                            <input type="number" id="compoundPrincipal" placeholder="10000000" min="0" step="1">
+                        </div>
+                    </div>
+                    <div id="dcaSection" class="hidden">
+                        <div class="input-group">
+                            <label for="compoundInitial" data-text-key="comp-label-initial">초기 투자금 (원, 선택)</label>
+                            <input type="number" id="compoundInitial" placeholder="0" min="0" step="1">
+                        </div>
+                        <div class="input-group">
+                            <label for="compoundMonthly" data-text-key="comp-label-monthly">월 납입금 (원)</label>
+                            <input type="number" id="compoundMonthly" placeholder="1000000" min="0" step="1">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="compoundRate" data-text-key="comp-label-rate">연 수익률 (%)</label>
+                        <input type="number" id="compoundRate" placeholder="10" min="0" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="compoundYears" data-text-key="comp-label-years">투자 기간 (년)</label>
+                        <input type="number" id="compoundYears" placeholder="10" min="1" max="50" step="1">
+                    </div>
+                    <button type="submit" class="calculate-btn" data-text-key="comp-calc-btn">복리 계산</button>
+                </form>
+
+                <div id="compoundResultSection" class="result-section hidden">
+                    <div class="result-title" data-text-key="comp-result-title">최종 금액</div>
+                    <div id="compoundResultValue" class="result-value"></div>
+                    <div class="result-extra-grid">
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="comp-total-input">총 납입금</div>
+                            <div id="compoundTotalInput" class="result-extra-value">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="comp-total-profit">총 수익금</div>
+                            <div id="compoundTotalProfit" class="result-extra-value positive">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="comp-profit-rate">수익률</div>
+                            <div id="compoundProfitRate" class="result-extra-value positive">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="comp-multiplier">원금 대비 배수</div>
+                            <div id="compoundMultiplier" class="result-extra-value">-</div>
+                        </div>
+                    </div>
+                    <div class="calculation-process">
+                        <h4 data-text-key="comp-yearly-h4">연도별 성장</h4>
+                        <div id="compoundProcessValues" class="process-values"></div>
+                    </div>
+                </div>
+
+                <div class="disclaimer" data-text-key="comp-disclaimer">
+                    <em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>
+                </div>
+
+                <div class="info-section">
+                    <h2 data-text-key="comp-info-h2">복리 계산기란?</h2>
+                    <p data-text-key="comp-info-p">복리(複利)란 원금에 이자가 붙고, 그 이자에 또 이자가 붙는 방식입니다. '이자의 이자'가 계속 쌓여 시간이 지날수록 수익이 기하급수적으로 증가합니다.</p>
+                    <h3 data-text-key="comp-formula-h3">📊 공식 설명</h3>
+                    <div class="formula-box">
+                        <strong>거치식: A = P × (1 + r)ⁿ</strong><br>
+                        <small>• A = 최종금액 &nbsp;• P = 원금 &nbsp;• r = 연 수익률 &nbsp;• n = 투자 기간(년)</small>
+                    </div>
+                    <div class="formula-box">
+                        <strong>적립식: 월 복리 적용 (매월 납입)</strong><br>
+                        <small>• 월 이율 = 연 수익률 ÷ 12<br>• 매월 말 납입 후 복리 계산</small>
+                    </div>
+                    <h3 data-text-key="comp-rule72-h3">💡 72의 법칙</h3>
+                    <p data-text-key="comp-rule72-p">72 ÷ 연 수익률 = 원금이 2배가 되는 기간(년). 예: 연 10% → 약 7.2년 후 2배</p>
+                    <div class="warning-box" data-text-key="comp-disc-box">
+                        <strong>⚠️ 면책 조항</strong><br>
+                        이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================= 수익률 PAGE ============================= -->
+    <div id="page-profit" class="page hidden">
+        <div class="container">
+            <div class="main-card">
+                <h1 data-text-key="prof-title">주식 수익률 계산기</h1>
+                <div class="description" data-text-key="prof-desc">
+                    💰 매수가·매도가·수수료를 입력하면 실제 수익금과 수익률을 계산합니다.
+                </div>
+
+                <form id="profitForm">
+                    <div class="input-group">
+                        <label for="buyPrice" data-text-key="prof-label-buy">매수가 (원)</label>
+                        <input type="number" id="buyPrice" placeholder="50000" min="0" step="0.01" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="sellPrice" data-text-key="prof-label-sell">매도가 (원)</label>
+                        <input type="number" id="sellPrice" placeholder="60000" min="0" step="0.01" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="stockQty" data-text-key="prof-label-qty">수량 (주)</label>
+                        <input type="number" id="stockQty" placeholder="100" min="0" step="0.01" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="feeRate" data-text-key="prof-label-fee">수수료율 (%, 매수+매도 합산)</label>
+                        <input type="number" id="feeRate" placeholder="0.3" min="0" step="0.01">
+                    </div>
+                    <button type="submit" class="calculate-btn" data-text-key="prof-calc-btn">수익률 계산</button>
+                </form>
+
+                <div id="profitResultSection" class="result-section hidden">
+                    <div class="result-title" data-text-key="prof-result-title">수익률</div>
+                    <div id="profitResultValue" class="result-value"></div>
+                    <div class="result-extra-grid">
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="prof-invested">투자금액</div>
+                            <div id="profitInvested" class="result-extra-value">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="prof-net">순 수익금</div>
+                            <div id="profitNet" class="result-extra-value">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="prof-fee">수수료 합계</div>
+                            <div id="profitFee" class="result-extra-value">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="prof-breakeven">손익분기가</div>
+                            <div id="profitBreakEven" class="result-extra-value">-</div>
+                        </div>
+                    </div>
+                    <div class="calculation-process">
+                        <h4 data-text-key="prof-calc-detail">계산 내역</h4>
+                        <div id="profitProcessValues" class="process-values"></div>
+                    </div>
+                </div>
+
+                <div class="disclaimer" data-text-key="prof-disclaimer">
+                    <em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>
+                </div>
+
+                <div class="info-section">
+                    <h2 data-text-key="prof-info-h2">주식 수익률 계산기란?</h2>
+                    <p data-text-key="prof-info-p">매수가와 매도가를 기반으로 실제 수익금과 수익률을 계산합니다. 증권사 수수료를 고려해야 실제 손익을 정확하게 알 수 있습니다.</p>
+                    <h3 data-text-key="prof-method-h3">📊 계산 방법</h3>
+                    <div class="formula-box">
+                        <strong>수익률 = (매도금액 - 매수금액 - 수수료) ÷ 매수금액 × 100</strong><br>
+                        <small>
+                            • 수수료 = (매수금액 + 매도금액) × 수수료율%<br>
+                            • 손익분기가 ≈ 매수가 × (1 + 수수료율%)
+                        </small>
+                    </div>
+                    <h3 data-text-key="prof-fee-h3">💡 수수료 참고</h3>
+                    <ul data-text-key="prof-fee-list">
+                        <li>국내 주식: 증권거래세 0.18~0.20% + 증권사 수수료 0.015~0.05%</li>
+                        <li>미국 주식: 증권사별 상이 (보통 $0 또는 소액 고정)</li>
+                        <li>코인: 거래소별 상이, 보통 0.05~0.1% 메이커/테이커</li>
+                    </ul>
+                    <div class="warning-box" data-text-key="prof-disc-box">
+                        <strong>⚠️ 면책 조항</strong><br>
+                        이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================= 배당금 PAGE ============================= -->
+    <div id="page-dividend" class="page hidden">
+        <div class="container">
+            <div class="main-card">
+                <h1 data-text-key="divd-title">배당금 계산기 (세후)</h1>
+                <div class="description" data-text-key="divd-desc">
+                    💵 투자금액과 배당수익률로 연간/분기/월 예상 배당금을 계산합니다.
+                </div>
+
+                <form id="dividendForm">
+                    <div class="input-group">
+                        <label for="divInvestment" data-text-key="divd-label-invest">투자금액 (원)</label>
+                        <input type="number" id="divInvestment" placeholder="10000000" min="0" step="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="divYield" data-text-key="divd-label-yield">연 배당수익률 (%)</label>
+                        <input type="number" id="divYield" placeholder="4" min="0" step="0.01" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="divTaxRate" data-text-key="divd-label-tax">배당소득세율 (%, 기본 15.4%)</label>
+                        <input type="number" id="divTaxRate" placeholder="15.4" min="0" max="100" step="0.1">
+                    </div>
+                    <button type="submit" class="calculate-btn" data-text-key="divd-calc-btn">배당금 계산</button>
+                </form>
+
+                <div id="dividendResultSection" class="result-section hidden">
+                    <div class="result-title" data-text-key="divd-result-title">연간 세후 배당금</div>
+                    <div id="dividendResultValue" class="result-value"></div>
+                    <div class="result-extra-grid">
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="divd-gross">연간 세전 배당금</div>
+                            <div id="divAnnualGross" class="result-extra-value">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="divd-quarterly">분기 세후 배당금</div>
+                            <div id="divQuarterly" class="result-extra-value">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="divd-monthly">월 세후 배당금</div>
+                            <div id="divMonthly" class="result-extra-value">-</div>
+                        </div>
+                        <div class="result-extra-card">
+                            <div class="result-extra-label" data-text-key="divd-tax">세금 공제액</div>
+                            <div id="divTax" class="result-extra-value">-</div>
+                        </div>
+                    </div>
+                    <div class="calculation-process">
+                        <h4 data-text-key="divd-calc-detail">계산 내역</h4>
+                        <div id="dividendProcessValues" class="process-values"></div>
+                    </div>
+                </div>
+
+                <div class="disclaimer" data-text-key="divd-disclaimer">
+                    <em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>
+                </div>
+
+                <div class="info-section">
+                    <h2 data-text-key="divd-info-h2">배당금 계산기란?</h2>
+                    <p data-text-key="divd-info-p">배당금 계산기는 투자금액과 배당수익률을 기반으로 예상 배당 수입을 계산합니다. 배당투자는 주가 상승 외에 정기적인 현금 흐름을 창출하는 투자 전략입니다.</p>
+                    <h3 data-text-key="divd-method-h3">📊 계산 방법</h3>
+                    <div class="formula-box">
+                        <strong>연간 세전 배당금 = 투자금액 × 배당수익률 ÷ 100</strong><br>
+                        <small>
+                            • 세금 = 세전 배당금 × 세율%<br>
+                            • 세후 배당금 = 세전 배당금 - 세금
+                        </small>
+                    </div>
+                    <h3 data-text-key="divd-tips-h3">💡 배당 투자 팁</h3>
+                    <ul data-text-key="divd-tips-list">
+                        <li><strong>배당수익률</strong>: 너무 높으면(10% 이상) 지속 가능성을 반드시 확인하세요</li>
+                        <li><strong>배당성향</strong>: 순이익 대비 배당금 비율. 50~70%가 적정 수준</li>
+                        <li><strong>배당 성장주</strong>: 매년 배당금이 늘어나는 기업이 장기 투자에 유리합니다</li>
+                        <li><strong>세금</strong>: 금융소득 연 2,000만원 초과 시 종합과세 적용</li>
+                    </ul>
+                    <div class="warning-box" data-text-key="divd-disc-box">
+                        <strong>⚠️ 면책 조항</strong><br>
+                        이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </main><!-- end #main-content -->
+
+    <!-- ============================= FOOTER ============================= -->
+    <footer style="background:#1e40af;color:#e0f2fe;padding:40px 20px;margin-top:0;">
+        <div style="max-width:900px;margin:0 auto;">
+            <div style="display:flex;flex-wrap:wrap;gap:32px;margin-bottom:32px;">
+                <div style="flex:1;min-width:200px;">
+                    <h2 style="color:#ffffff;font-size:18px;font-weight:800;margin-bottom:12px;">KellyCalc</h2>
+                    <p style="font-size:13px;line-height:1.7;color:#bfdbfe;">주식·코인 투자자를 위한 무료 투자 계산기 모음. 켈리공식, 평단가, 복리, 수익률, 배당금 계산기를 한 곳에서 이용하세요.</p>
+                </div>
+                <nav style="flex:1;min-width:160px;" aria-label="계산기 바로가기">
+                    <h3 style="color:#93c5fd;font-size:13px;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">계산기 목록</h3>
+                    <ul style="list-style:none;padding:0;margin:0;">
+                        <li style="margin-bottom:8px;"><a href="#" onclick="document.querySelector('[data-page=kelly]').click();return false;" style="color:#e0f2fe;text-decoration:none;font-size:14px;">🎯 켈리공식 계산기</a></li>
+                        <li style="margin-bottom:8px;"><a href="#" onclick="document.querySelector('[data-page=average]').click();return false;" style="color:#e0f2fe;text-decoration:none;font-size:14px;">📊 평단가 계산기</a></li>
+                        <li style="margin-bottom:8px;"><a href="#" onclick="document.querySelector('[data-page=compound]').click();return false;" style="color:#e0f2fe;text-decoration:none;font-size:14px;">📈 복리 계산기</a></li>
+                        <li style="margin-bottom:8px;"><a href="#" onclick="document.querySelector('[data-page=profit]').click();return false;" style="color:#e0f2fe;text-decoration:none;font-size:14px;">💰 주식 수익률 계산기</a></li>
+                        <li style="margin-bottom:8px;"><a href="#" onclick="document.querySelector('[data-page=dividend]').click();return false;" style="color:#e0f2fe;text-decoration:none;font-size:14px;">💵 배당금 계산기</a></li>
+                    </ul>
+                </nav>
+                <div style="flex:1;min-width:200px;">
+                    <h3 style="color:#93c5fd;font-size:13px;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">사이트 정보</h3>
+                    <p style="font-size:13px;line-height:1.8;color:#bfdbfe;">
+                        <strong style="color:#e0f2fe;">켈리공식 계산기</strong> — 승률·수익률로 최적 투자 비율 계산<br>
+                        <strong style="color:#e0f2fe;">물타기(평단가) 계산기</strong> — 분할매수 평균 단가 계산<br>
+                        <strong style="color:#e0f2fe;">복리 계산기</strong> — 거치식·적립식 복리 수익 계산<br>
+                        <strong style="color:#e0f2fe;">수익률 계산기</strong> — 매수·매도가 기반 손익 계산<br>
+                        <strong style="color:#e0f2fe;">배당금 계산기</strong> — 세후 배당 수입 계산
+                    </p>
+                </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.15);padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+                <p style="font-size:12px;color:#93c5fd;margin:0;">© 2025 KellyCalc. 본 사이트의 모든 계산기는 수학적 도구로만 제공되며, 투자 권유가 아닙니다.</p>
+                <p style="font-size:12px;color:#93c5fd;margin:0;">
+                    <a href="https://www.kellycalc.com/" style="color:#93c5fd;text-decoration:none;">홈</a>
+                    &nbsp;·&nbsp;
+                    <a href="/sitemap.xml" style="color:#93c5fd;text-decoration:none;">사이트맵</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "KellyCalc - 투자 계산기 모음",
+        "url": "https://www.kellycalc.com",
+        "description": "켈리공식, 평단가, 복리, 주식 수익률, 배당금 계산기를 한 곳에서 무료로 제공하는 투자 계산기 모음 사이트",
+        "inLanguage": "ko",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.kellycalc.com/",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "KellyCalc",
+        "url": "https://www.kellycalc.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.kellycalc.com/favicon.png"
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "투자 계산기 목록",
+        "description": "주식·코인 투자자를 위한 무료 계산기 모음",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@type": "WebApplication",
+              "name": "켈리공식 계산기",
+              "url": "https://www.kellycalc.com/",
+              "description": "승률과 수익률을 입력하면 최적의 투자 비율을 계산하는 켈리 공식(Kelly Criterion) 계산기. 주식, 코인, 베팅에 활용 가능.",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "Any",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+              "featureList": ["켈리 공식 계산", "Fractional Kelly 지원", "손익분기 승률 계산", "4개 언어 지원"]
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@type": "WebApplication",
+              "name": "평단가 계산기 (물타기 계산기)",
+              "url": "https://www.kellycalc.com/",
+              "description": "분할매수(물타기) 시 평균 매수가를 계산하는 도구. 여러 번 매수한 주식·코인의 평균 단가를 계산.",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "Any",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+              "featureList": ["물타기 평단가 계산", "다중 매수 내역 입력", "총 투자금액 자동 합산"]
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@type": "WebApplication",
+              "name": "복리 계산기",
+              "url": "https://www.kellycalc.com/",
+              "description": "거치식 및 적립식 복리 수익을 계산하는 도구. 연 수익률과 투자 기간을 입력하면 최종 금액과 수익률을 확인.",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "Any",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+              "featureList": ["거치식 복리 계산", "적립식(월납입) 복리 계산", "연도별 성장 내역", "원금 대비 배수 계산"]
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "item": {
+              "@type": "WebApplication",
+              "name": "주식 수익률 계산기",
+              "url": "https://www.kellycalc.com/",
+              "description": "매수가, 매도가, 수수료를 입력하면 실제 수익금과 수익률을 계산. 증권사 수수료까지 고려한 정확한 손익 계산.",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "Any",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+              "featureList": ["주식 수익률 계산", "수수료 포함 순이익 계산", "손익분기가 계산"]
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "item": {
+              "@type": "WebApplication",
+              "name": "배당금 계산기",
+              "url": "https://www.kellycalc.com/",
+              "description": "투자금액과 배당수익률로 연간·분기·월 예상 배당금을 계산. 배당소득세(15.4%) 공제 후 실수령액 확인.",
+              "applicationCategory": "FinanceApplication",
+              "operatingSystem": "Any",
+              "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
+              "featureList": ["연간 배당금 계산", "분기·월 배당금 계산", "배당소득세 자동 공제"]
+            }
+          }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "켈리공식이란 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "켈리공식(Kelly Criterion)은 1956년 존 켈리가 개발한 수학적 투자 전략으로, 승률과 수익률을 기반으로 최적의 투자 비율을 계산합니다. 공식은 f = p/a - q/b 이며, 장기적으로 자본을 최대화하는 데 사용됩니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "평단가(물타기) 계산기는 어떻게 사용하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "각 매수 회차의 가격과 수량을 입력하면 자동으로 평균 매수가(평단가)를 계산합니다. 평단가 = 총 투자금액 ÷ 총 보유 수량 공식을 사용하며, 매수 내역 추가 버튼으로 여러 번의 분할매수 내역을 입력할 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "복리 계산기에서 거치식과 적립식의 차이는 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "거치식은 목돈을 한 번에 투자하는 방식으로 A = P × (1+r)^n 공식을 사용합니다. 적립식은 매월 일정 금액을 납입하는 방식으로 월 복리로 계산됩니다. 연 수익률이 같다면 장기적으로는 복리의 마법으로 원금보다 훨씬 큰 수익을 얻을 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "주식 수익률 계산 시 수수료는 어떻게 입력하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "수수료율에 매수와 매도 수수료를 합산한 값을 입력하세요. 국내 주식은 증권거래세(0.18~0.20%)와 증권사 수수료(0.015~0.05%)를 합산합니다. 미국 주식이나 코인은 해당 거래소의 수수료율을 확인하세요."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "배당금 계산기의 세율은 어떻게 설정하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "국내 주식 배당금은 기본 배당소득세율 15.4%(소득세 14% + 지방소득세 1.4%)가 적용됩니다. 미국 주식 배당금은 원천징수 세율이 다를 수 있습니다. 연간 금융소득이 2,000만원을 초과하면 종합과세가 적용될 수 있으니 세무사와 상담하세요."
+            }
+          }
+        ]
+      }
+    ]
+    </script>
+
+    <script>
+    // ===== HELPER =====
+    function fmt(num) {
+        return new Intl.NumberFormat('ko-KR').format(num);
+    }
+
+    // ===== PAGE SWITCHING =====
+    document.querySelectorAll('.nav-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
+            this.classList.add('active');
+            document.querySelectorAll('.page').forEach(function(p) { p.classList.add('hidden'); });
+            document.getElementById('page-' + this.dataset.page).classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    // ===== TRANSLATIONS (all pages) =====
+    var currentLang = 'ko';
+    const translations = {
+        ko: {
+            "page-title": "투자 계산기 모음 - 켈리공식·평단가·복리·수익률·배당금 무료 계산기",
+            "meta-desc": "켈리공식, 평단가(물타기), 복리, 주식 수익률, 배당금 계산기를 한 곳에서! 주식·코인 투자자를 위한 무료 자금관리 도구 모음입니다.",
+            "og-title": "투자 계산기 모음 - 켈리공식·평단가·복리·수익률·배당금",
+            "og-desc": "주식·코인 투자자를 위한 무료 계산기 모음! 켈리공식, 평단가, 복리, 수익률, 배당금 계산기를 한 곳에서 이용하세요.",
+            "nav-kelly": "🎯 켈리공식", "nav-average": "📊 평단가", "nav-compound": "📈 복리", "nav-profit": "💰 수익률", "nav-dividend": "💵 배당금",
+            title: "Kelly 비율 계산기",
+            "nav-calculator": "계산기", "nav-guide": "공식 가이드", "nav-tips": "사용법 및 주의사항",
+            description: "🎯 주식, 코인, 베팅에서 얼마나 투자해야 할지 과학적으로 계산해드립니다! 승률과 수익률만 입력하면 최적의 자금 관리 비율을 알 수 있어요.",
+            "label-winrate": "승률 P (%)", "label-profit": "순수익률 B (%)", "label-loss": "손실률 A (%)",
+            "calculate-btn": "켈리 비율 계산",
+            "placeholder-winrate": "70", "placeholder-profit": "100", "placeholder-loss": "50",
+            disclaimer: "※ 본 계산기는 켈리 공식의 수학식 그대로를 적용합니다.<br>실제 투자에서는 일반적으로 계산값의 25 ~ 50%만 사용합니다.<br><br><em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>",
+            "formula-title": "켈리 공식이란?", "formula-intro": "켈리 공식(Kelly Criterion)은 1956년 존 켈리(John Kelly)가 개발한 수학적 베팅 전략으로, 장기적으로 자본을 최대화하는 최적의 베팅 크기를 계산하는 공식입니다.",
+            "formula-explanation": "📊 공식 설명",
+            "formula-variables": "• f = 총 자본 대비 베팅 비율<br>• p = 승률 (이길 확률)<br>• q = 패률 (질 확률 = 1-p)<br>• a = 손실률 (질 때 잃는 비율)<br>• b = 수익률 (이길 때 얻는 비율)",
+            "usage-method": "🎯 사용 방법",
+            "usage-steps": "<li><strong>승률(P)</strong>: 과거 데이터를 바탕으로 성공 확률을 추정</li><li><strong>순수익률(B)</strong>: 성공 시 얻는 수익의 비율 (예: 100% 수익 → 100 입력)</li><li><strong>손실률(A)</strong>: 실패 시 잃는 손실의 비율 (예: 50% 손실 → 50 입력)</li><li>계산된 비율이 투자 권장 비율입니다</li>",
+            precautions: "⚠️ 중요한 주의점",
+            "precautions-list": "<li><strong>확률 추정의 어려움</strong>: 실제 투자에서 정확한 승률과 수익률 예측은 매우 어렵습니다</li><li><strong>변동성 고려</strong>: 켈리 공식은 변동성을 직접 고려하지 않으므로 실제로는 계산값의 25-50%만 사용하는 것이 안전합니다</li><li><strong>자금 관리</strong>: 분산 투자로 전체 자본을 한 번에 잃지 않도록 주의하세요</li><li><strong>심리적 요인</strong>: 계산된 비율이 높아도 개인의 위험 감수 능력을 고려해야 합니다</li>",
+            "practical-tips": "💡 실제 적용 팁",
+            "practical-tips-list": "<li>계산 결과가 25%라면, 실제로는 6-12% 정도로 시작해보세요</li><li>처음에는 보수적으로 접근하고 점진적으로 조정하세요</li><li>절대 빌린 돈이나 생활비로 투자하지 마세요</li><li>여러 투자 기회에 분산하여 위험을 줄이세요</li>",
+            "final-disclaimer": "<strong>⚠️ 면책 조항</strong><br>이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다. 모든 투자에는 손실 위험이 있으며, 투자 결정은 본인의 책임입니다.",
+            "avg-title": "평단가 계산기 (물타기)", "avg-desc": "📊 분할매수(물타기) 시 평균 매수가를 계산합니다. 매수 내역을 추가해 계산하세요.",
+            "avg-label-price": "매수가 (원)", "avg-label-qty": "수량", "avg-add-row": "+ 매수 내역 추가", "avg-calc-btn": "평단가 계산",
+            "avg-result-title": "새 평균 매수가", "avg-qty-label": "총 보유 수량", "avg-invest-label": "총 투자금액", "avg-calc-detail": "계산 내역",
+            "avg-disclaimer": "<em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>",
+            "avg-info-h2": "평단가(물타기) 계산기란?", "avg-info-p": "평단가 계산기는 여러 번에 나누어 매수할 때 평균 매수가격을 계산하는 도구입니다. 주가가 하락했을 때 추가 매수하여 평균 단가를 낮추는 전략에 활용됩니다.",
+            "avg-formula-h3": "📊 공식 설명", "avg-warning-h3": "⚠️ 물타기 주의사항",
+            "avg-warning-list": "<li><strong>손실 확대 위험</strong>: 하락이 계속되면 추가 투자금도 손실이 발생합니다</li><li><strong>비중 과도</strong>: 한 종목에 너무 많은 비중을 실으면 분산투자 효과가 사라집니다</li><li><strong>펀더멘털 확인</strong>: 단순히 싸다는 이유만으로 추가 매수하지 말고, 기업 가치를 재확인하세요</li><li><strong>손절 기준</strong>: 물타기 전 반드시 손절 기준을 정해두세요</li>",
+            "avg-disc-box": "<strong>⚠️ 면책 조항</strong><br>이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다.",
+            "comp-title": "복리 계산기 (거치식·적립식)", "comp-desc": "📈 거치식 또는 적립식 복리 수익을 계산합니다. 투자금, 수익률, 기간을 입력하세요.",
+            "comp-mode-lump": "거치식", "comp-mode-dca": "적립식 (월납입)",
+            "comp-label-principal": "원금 (원)", "comp-label-initial": "초기 투자금 (원, 선택)", "comp-label-monthly": "월 납입금 (원)", "comp-label-rate": "연 수익률 (%)", "comp-label-years": "투자 기간 (년)", "comp-calc-btn": "복리 계산",
+            "comp-result-title": "최종 금액", "comp-total-input": "총 납입금", "comp-total-profit": "총 수익금", "comp-profit-rate": "수익률", "comp-multiplier": "원금 대비 배수", "comp-yearly-h4": "연도별 성장",
+            "comp-disclaimer": "<em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>",
+            "comp-info-h2": "복리 계산기란?", "comp-info-p": "복리(複利)란 원금에 이자가 붙고, 그 이자에 또 이자가 붙는 방식입니다. '이자의 이자'가 계속 쌓여 시간이 지날수록 수익이 기하급수적으로 증가합니다.",
+            "comp-formula-h3": "📊 공식 설명", "comp-rule72-h3": "💡 72의 법칙", "comp-rule72-p": "72 ÷ 연 수익률 = 원금이 2배가 되는 기간(년). 예: 연 10% → 약 7.2년 후 2배",
+            "comp-disc-box": "<strong>⚠️ 면책 조항</strong><br>이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다.",
+            "prof-title": "주식 수익률 계산기", "prof-desc": "💰 매수가·매도가·수수료를 입력하면 실제 수익금과 수익률을 계산합니다.",
+            "prof-label-buy": "매수가 (원)", "prof-label-sell": "매도가 (원)", "prof-label-qty": "수량 (주)", "prof-label-fee": "수수료율 (%, 매수+매도 합산)", "prof-calc-btn": "수익률 계산",
+            "prof-result-title": "수익률", "prof-invested": "투자금액", "prof-net": "순 수익금", "prof-fee": "수수료 합계", "prof-breakeven": "손익분기가", "prof-calc-detail": "계산 내역",
+            "prof-disclaimer": "<em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>",
+            "prof-info-h2": "주식 수익률 계산기란?", "prof-info-p": "매수가와 매도가를 기반으로 실제 수익금과 수익률을 계산합니다. 증권사 수수료를 고려해야 실제 손익을 정확하게 알 수 있습니다.",
+            "prof-method-h3": "📊 계산 방법", "prof-fee-h3": "💡 수수료 참고",
+            "prof-fee-list": "<li>국내 주식: 증권거래세 0.18~0.20% + 증권사 수수료 0.015~0.05%</li><li>미국 주식: 증권사별 상이 (보통 $0 또는 소액 고정)</li><li>코인: 거래소별 상이, 보통 0.05~0.1% 메이커/테이커</li>",
+            "prof-disc-box": "<strong>⚠️ 면책 조항</strong><br>이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다.",
+            "divd-title": "배당금 계산기 (세후)", "divd-desc": "💵 투자금액과 배당수익률로 연간/분기/월 예상 배당금을 계산합니다.",
+            "divd-label-invest": "투자금액 (원)", "divd-label-yield": "연 배당수익률 (%)", "divd-label-tax": "배당소득세율 (%, 기본 15.4%)", "divd-calc-btn": "배당금 계산",
+            "divd-result-title": "연간 세후 배당금", "divd-gross": "연간 세전 배당금", "divd-quarterly": "분기 세후 배당금", "divd-monthly": "월 세후 배당금", "divd-tax": "세금 공제액", "divd-calc-detail": "계산 내역",
+            "divd-disclaimer": "<em>이 도구는 객관적 계산 목적으로만 제공되며, 투자 권유가 아닙니다.</em>",
+            "divd-info-h2": "배당금 계산기란?", "divd-info-p": "배당금 계산기는 투자금액과 배당수익률을 기반으로 예상 배당 수입을 계산합니다. 배당투자는 주가 상승 외에 정기적인 현금 흐름을 창출하는 투자 전략입니다.",
+            "divd-method-h3": "📊 계산 방법", "divd-tips-h3": "💡 배당 투자 팁",
+            "divd-tips-list": "<li><strong>배당수익률</strong>: 너무 높으면(10% 이상) 지속 가능성을 반드시 확인하세요</li><li><strong>배당성향</strong>: 순이익 대비 배당금 비율. 50~70%가 적정 수준</li><li><strong>배당 성장주</strong>: 매년 배당금이 늘어나는 기업이 장기 투자에 유리합니다</li><li><strong>세금</strong>: 금융소득 연 2,000만원 초과 시 종합과세 적용</li>",
+            "divd-disc-box": "<strong>⚠️ 면책 조항</strong><br>이 계산기는 수학적 도구일 뿐이며, 실제 투자 성과를 보장하지 않습니다."
+        },
+        en: {
+            "page-title": "Investment Calculators - Kelly Criterion, Average Price, Compound, Returns, Dividend | Free",
+            "meta-desc": "Free investment calculators in one place: Kelly Criterion, Average Price (DCA), Compound Interest, Stock Returns, and Dividend Calculator for stocks & crypto.",
+            "og-title": "Investment Calculator Suite - Kelly · Avg Price · Compound · Returns · Dividend",
+            "og-desc": "Free investment calculators for stocks & crypto: Kelly Criterion, Average Price, Compound Interest, Profit Rate, Dividend Calculator.",
+            "nav-kelly": "🎯 Kelly", "nav-average": "📊 Avg Price", "nav-compound": "📈 Compound", "nav-profit": "💰 Returns", "nav-dividend": "💵 Dividend",
+            title: "Kelly Criterion Calculator",
+            "nav-calculator": "Calculator", "nav-guide": "Formula Guide", "nav-tips": "Usage & Precautions",
+            description: "🚀 Scientific investment calculator for stocks, crypto, and betting! Enter your win rate and profit margin to discover the optimal portfolio allocation. Completely free!",
+            "label-winrate": "Win Rate P (%)", "label-profit": "Profit Rate B (%)", "label-loss": "Loss Rate A (%)",
+            "calculate-btn": "Calculate Kelly Ratio",
+            "placeholder-winrate": "70", "placeholder-profit": "100", "placeholder-loss": "50",
+            disclaimer: "※ This calculator applies the Kelly formula's mathematical equation as is.<br>In actual investment, generally only 25 ~ 50% of the calculated value is used.<br><br><em>This tool is provided for objective calculation purposes only and is not investment advice.</em>",
+            "formula-title": "What is the Kelly Formula?", "formula-intro": "The Kelly Criterion is a mathematical betting strategy developed by John Kelly in 1956 to calculate the optimal bet size that maximizes capital in the long term.",
+            "formula-explanation": "📊 Formula Explanation",
+            "formula-variables": "• f = Betting ratio relative to total capital<br>• p = Win rate (probability of winning)<br>• q = Loss rate (probability of losing = 1-p)<br>• a = Loss rate (ratio lost when losing)<br>• b = Profit rate (ratio gained when winning)",
+            "usage-method": "🎯 How to Use",
+            "usage-steps": "<li><strong>Win Rate(P)</strong>: Estimate success probability based on historical data</li><li><strong>Profit Rate(B)</strong>: Ratio of profit when successful (e.g., 100% profit → enter 100)</li><li><strong>Loss Rate(A)</strong>: Ratio of loss when failed (e.g., 50% loss → enter 50)</li><li>The calculated ratio is the recommended investment ratio</li>",
+            precautions: "⚠️ Important Precautions",
+            "precautions-list": "<li><strong>Difficulty in probability estimation</strong>: Accurate prediction is very difficult in practice</li><li><strong>Volatility consideration</strong>: Use only 25-50% of the calculated value in practice</li><li><strong>Fund management</strong>: Diversify to avoid losing all capital in one investment</li><li><strong>Psychological factors</strong>: Consider your personal risk tolerance</li>",
+            "practical-tips": "💡 Practical Tips",
+            "practical-tips-list": "<li>If result is 25%, start with about 6-12% in practice</li><li>Start conservatively and adjust gradually</li><li>Never invest with borrowed money or living expenses</li><li>Diversify across multiple opportunities</li>",
+            "final-disclaimer": "<strong>⚠️ Disclaimer</strong><br>This calculator is a mathematical tool only and does not guarantee investment performance. All investments carry risk of loss.",
+            "avg-title": "Average Price Calculator (DCA)", "avg-desc": "📊 Calculate your average purchase price for dollar-cost averaging. Add your buy entries to calculate.",
+            "avg-label-price": "Buy Price (₩)", "avg-label-qty": "Quantity", "avg-add-row": "+ Add Buy Entry", "avg-calc-btn": "Calculate Average Price",
+            "avg-result-title": "New Average Price", "avg-qty-label": "Total Holdings", "avg-invest-label": "Total Investment", "avg-calc-detail": "Calculation Details",
+            "avg-disclaimer": "<em>This tool is provided for objective calculation purposes only and is not investment advice.</em>",
+            "avg-info-h2": "What is an Average Price Calculator?", "avg-info-p": "An average price calculator helps you find your average cost basis when buying in multiple tranches. It is commonly used when averaging down during price dips to lower your overall cost basis.",
+            "avg-formula-h3": "📊 Formula", "avg-warning-h3": "⚠️ Averaging Down Warnings",
+            "avg-warning-list": "<li><strong>Risk of compounding losses</strong>: If the price keeps falling, additional investments also incur losses</li><li><strong>Over-concentration</strong>: Putting too much into one position eliminates diversification benefits</li><li><strong>Check fundamentals</strong>: Don't buy more just because it's cheaper — reconfirm the company's value first</li><li><strong>Set a stop-loss</strong>: Always set a stop-loss level before averaging down</li>",
+            "avg-disc-box": "<strong>⚠️ Disclaimer</strong><br>This calculator is a mathematical tool only and does not guarantee actual investment performance.",
+            "comp-title": "Compound Interest Calculator", "comp-desc": "📈 Calculate compound returns for lump sum or monthly DCA. Enter amount, rate, and period.",
+            "comp-mode-lump": "Lump Sum", "comp-mode-dca": "Monthly DCA",
+            "comp-label-principal": "Principal (₩)", "comp-label-initial": "Initial Investment (₩, optional)", "comp-label-monthly": "Monthly Contribution (₩)", "comp-label-rate": "Annual Return (%)", "comp-label-years": "Investment Period (years)", "comp-calc-btn": "Calculate Compound",
+            "comp-result-title": "Final Amount", "comp-total-input": "Total Invested", "comp-total-profit": "Total Profit", "comp-profit-rate": "Return Rate", "comp-multiplier": "Growth Multiple", "comp-yearly-h4": "Annual Growth",
+            "comp-disclaimer": "<em>This tool is provided for objective calculation purposes only and is not investment advice.</em>",
+            "comp-info-h2": "What is a Compound Interest Calculator?", "comp-info-p": "Compound interest means earning interest on your interest — 'interest on interest' accumulates over time, causing exponential growth the longer you invest.",
+            "comp-formula-h3": "📊 Formula", "comp-rule72-h3": "💡 Rule of 72", "comp-rule72-p": "72 ÷ annual return rate = years to double your money. Example: 10% p.a. → doubles in ~7.2 years",
+            "comp-disc-box": "<strong>⚠️ Disclaimer</strong><br>This calculator is a mathematical tool only and does not guarantee actual investment performance.",
+            "prof-title": "Stock Returns Calculator", "prof-desc": "💰 Enter buy price, sell price, and fees to calculate your actual profit and return rate.",
+            "prof-label-buy": "Buy Price (₩)", "prof-label-sell": "Sell Price (₩)", "prof-label-qty": "Quantity (shares)", "prof-label-fee": "Commission Rate (%, buy+sell combined)", "prof-calc-btn": "Calculate Returns",
+            "prof-result-title": "Return Rate", "prof-invested": "Investment Amount", "prof-net": "Net Profit", "prof-fee": "Total Fees", "prof-breakeven": "Break-even Price", "prof-calc-detail": "Calculation Details",
+            "prof-disclaimer": "<em>This tool is provided for objective calculation purposes only and is not investment advice.</em>",
+            "prof-info-h2": "What is a Stock Returns Calculator?", "prof-info-p": "Calculates your actual profit and return rate based on buy and sell prices. Accurate P&L requires factoring in broker commissions.",
+            "prof-method-h3": "📊 Calculation Method", "prof-fee-h3": "💡 Commission Reference",
+            "prof-fee-list": "<li>Korean stocks: 0.18–0.20% transaction tax + 0.015–0.05% broker fee</li><li>US stocks: varies by broker (often $0 or small fixed fee)</li><li>Crypto: varies by exchange, typically 0.05–0.1% maker/taker</li>",
+            "prof-disc-box": "<strong>⚠️ Disclaimer</strong><br>This calculator is a mathematical tool only and does not guarantee actual investment performance.",
+            "divd-title": "Dividend Calculator (After-Tax)", "divd-desc": "💵 Calculate annual, quarterly, and monthly estimated dividends from your investment amount and yield.",
+            "divd-label-invest": "Investment Amount (₩)", "divd-label-yield": "Annual Dividend Yield (%)", "divd-label-tax": "Dividend Tax Rate (%, default 15.4%)", "divd-calc-btn": "Calculate Dividend",
+            "divd-result-title": "Annual After-Tax Dividend", "divd-gross": "Annual Pre-Tax Dividend", "divd-quarterly": "Quarterly After-Tax", "divd-monthly": "Monthly After-Tax", "divd-tax": "Tax Deducted", "divd-calc-detail": "Calculation Details",
+            "divd-disclaimer": "<em>This tool is provided for objective calculation purposes only and is not investment advice.</em>",
+            "divd-info-h2": "What is a Dividend Calculator?", "divd-info-p": "A dividend calculator estimates your expected dividend income based on investment amount and yield. Dividend investing generates regular cash flow in addition to capital appreciation.",
+            "divd-method-h3": "📊 Calculation Method", "divd-tips-h3": "💡 Dividend Investment Tips",
+            "divd-tips-list": "<li><strong>High yield caution</strong>: Yields above 10% — verify sustainability first</li><li><strong>Payout ratio</strong>: 50–70% of net income is generally sustainable</li><li><strong>Dividend growth stocks</strong>: Companies that grow dividends annually are best for long-term holding</li><li><strong>Tax</strong>: Financial income over a threshold may be subject to comprehensive taxation</li>",
+            "divd-disc-box": "<strong>⚠️ Disclaimer</strong><br>This calculator is a mathematical tool only and does not guarantee actual investment performance."
+        },
+        ja: {
+            "page-title": "投資計算機セット - ケリー公式・平均単価・複利・利益率・配当金 | 無料",
+            "meta-desc": "ケリー公式、平均単価（ナンピン）、複利、株式利益率、配当金計算機を一か所で！株式・仮想通貨投資家向け無料ツール集。",
+            "og-title": "投資計算機セット - ケリー公式·平均単価·複利·利益率·配当金",
+            "og-desc": "株式・仮想通貨投資家向け無料計算機セット！ケリー公式、平均単価、複利、利益率、配当金計算機をひとつのページで。",
+            "nav-kelly": "🎯 ケリー公式", "nav-average": "📊 平均単価", "nav-compound": "📈 複利", "nav-profit": "💰 利益率", "nav-dividend": "💵 配当金",
+            title: "ケリー基準計算機",
+            "nav-calculator": "計算機", "nav-guide": "公式ガイド", "nav-tips": "使用法と注意事項",
+            description: "📈 株式・仮想通貨・投資で最適な資金配分を科学的に計算！勝率と利益率を入力するだけ。完全無料！",
+            "label-winrate": "勝率 P (%)", "label-profit": "利益率 B (%)", "label-loss": "損失率 A (%)",
+            "calculate-btn": "ケリー比率計算",
+            "placeholder-winrate": "70", "placeholder-profit": "100", "placeholder-loss": "50",
+            disclaimer: "※ この計算機はケリー公式の数学式をそのまま適用します。<br>実際の投資では一般的に計算値の25～50%のみを使用します。<br><br><em>このツールは客観的計算目的でのみ提供され、投資勧誘ではありません。</em>",
+            "formula-title": "ケリー公式とは？", "formula-intro": "ケリー公式（Kelly Criterion）は1956年にジョン・ケリーが開発した数学的ベッティング戦略で、長期的に資本を最大化する最適なベット金額を計算する公式です。",
+            "formula-explanation": "📊 公式説明",
+            "formula-variables": "• f = 総資本に対するベット比率<br>• p = 勝率（勝つ確率）<br>• q = 敗率（負ける確率 = 1-p）<br>• a = 損失率（負けた時に失う比率）<br>• b = 利益率（勝った時に得る比率）",
+            "usage-method": "🎯 使用方法",
+            "usage-steps": "<li><strong>勝率(P)</strong>: 過去のデータを基に成功確率を推定</li><li><strong>利益率(B)</strong>: 成功時に得る利益の比率</li><li><strong>損失率(A)</strong>: 失敗時に失う損失の比率</li><li>計算された比率が投資推奨比率です</li>",
+            precautions: "⚠️ 重要な注意点",
+            "precautions-list": "<li>実際の投資で正確な勝率予測は非常に困難です</li><li>実際には計算値の25-50%のみを使用するのが安全です</li><li>分散投資が必要です</li><li>個人のリスク許容度を考慮すべきです</li>",
+            "practical-tips": "💡 実際の適用のコツ",
+            "practical-tips-list": "<li>計算結果が25%なら、実際には6-12%程度で始めてください</li><li>最初は保守的にアプローチしてください</li><li>借りたお金や生活費で投資しないでください</li><li>複数の投資機会に分散してください</li>",
+            "final-disclaimer": "<strong>⚠️ 免責事項</strong><br>この計算機は数学的ツールに過ぎず、投資成果を保証するものではありません。",
+            "avg-title": "平均単価計算機（ナンピン）", "avg-desc": "📊 分割買い（ナンピン）時の平均購入価格を計算します。購入履歴を追加して計算してください。",
+            "avg-label-price": "購入価格（円）", "avg-label-qty": "数量", "avg-add-row": "+ 購入履歴を追加", "avg-calc-btn": "平均単価を計算",
+            "avg-result-title": "新しい平均単価", "avg-qty-label": "合計保有数量", "avg-invest-label": "合計投資金額", "avg-calc-detail": "計算内訳",
+            "avg-disclaimer": "<em>このツールは客観的計算目的でのみ提供され、投資勧誘ではありません。</em>",
+            "avg-info-h2": "平均単価（ナンピン）計算機とは？", "avg-info-p": "平均単価計算機は、複数回に分けて購入した際の平均購入価格を計算するツールです。価格下落時に追加購入して平均コストを下げる戦略に活用されます。",
+            "avg-formula-h3": "📊 公式説明", "avg-warning-h3": "⚠️ ナンピンの注意点",
+            "avg-warning-list": "<li><strong>損失拡大リスク</strong>: 下落が続くと追加投資分も損失になります</li><li><strong>集中リスク</strong>: 一銘柄への集中は分散投資効果を失わせます</li><li><strong>ファンダメンタルの確認</strong>: 単に安いからといって追加購入せず、企業価値を再確認してください</li><li><strong>損切り基準の設定</strong>: ナンピン前に必ず損切り基準を設けてください</li>",
+            "avg-disc-box": "<strong>⚠️ 免責事項</strong><br>この計算機は数学的ツールに過ぎず、実際の投資成果を保証するものではありません。",
+            "comp-title": "複利計算機（一括・積立）", "comp-desc": "📈 一括投資または積立投資の複利収益を計算します。投資額、利回り、期間を入力してください。",
+            "comp-mode-lump": "一括投資", "comp-mode-dca": "積立投資（月払）",
+            "comp-label-principal": "元金（円）", "comp-label-initial": "初期投資額（円、任意）", "comp-label-monthly": "月払込金（円）", "comp-label-rate": "年利回り（%）", "comp-label-years": "投資期間（年）", "comp-calc-btn": "複利計算",
+            "comp-result-title": "最終金額", "comp-total-input": "合計払込金", "comp-total-profit": "合計利益", "comp-profit-rate": "利益率", "comp-multiplier": "元金比倍率", "comp-yearly-h4": "年別成長",
+            "comp-disclaimer": "<em>このツールは客観的計算目的でのみ提供され、投資勧誘ではありません。</em>",
+            "comp-info-h2": "複利計算機とは？", "comp-info-p": "複利とは、元金に利息がつき、その利息にさらに利息がつく方式です。「利息の利息」が積み重なり、時間が経つほど収益が指数関数的に増加します。",
+            "comp-formula-h3": "📊 公式説明", "comp-rule72-h3": "💡 72の法則", "comp-rule72-p": "72 ÷ 年利回り = 元金が2倍になる期間（年）。例：年10% → 約7.2年後に2倍",
+            "comp-disc-box": "<strong>⚠️ 免責事項</strong><br>この計算機は数学的ツールに過ぎず、実際の投資成果を保証するものではありません。",
+            "prof-title": "株式利益率計算機", "prof-desc": "💰 購入価格・売却価格・手数料を入力すると実際の利益と利益率を計算します。",
+            "prof-label-buy": "購入価格（円）", "prof-label-sell": "売却価格（円）", "prof-label-qty": "数量（株）", "prof-label-fee": "手数料率（%、買+売合計）", "prof-calc-btn": "利益率を計算",
+            "prof-result-title": "利益率", "prof-invested": "投資金額", "prof-net": "純利益", "prof-fee": "手数料合計", "prof-breakeven": "損益分岐価格", "prof-calc-detail": "計算内訳",
+            "prof-disclaimer": "<em>このツールは客観的計算目的でのみ提供され、投資勧誘ではありません。</em>",
+            "prof-info-h2": "株式利益率計算機とは？", "prof-info-p": "購入価格と売却価格を基に実際の利益と利益率を計算します。証券会社の手数料を考慮することで正確な損益を把握できます。",
+            "prof-method-h3": "📊 計算方法", "prof-fee-h3": "💡 手数料の目安",
+            "prof-fee-list": "<li>国内株式：証券取引税 0.18〜0.20% + 証券会社手数料 0.015〜0.05%</li><li>米国株：証券会社により異なる（$0または少額固定が多い）</li><li>仮想通貨：取引所により異なる、通常0.05〜0.1%メイカー/テイカー</li>",
+            "prof-disc-box": "<strong>⚠️ 免責事項</strong><br>この計算機は数学的ツールに過ぎず、実際の投資成果を保証するものではありません。",
+            "divd-title": "配当金計算機（税引後）", "divd-desc": "💵 投資金額と配当利回りから年間・四半期・月間の予想配当金を計算します。",
+            "divd-label-invest": "投資金額（円）", "divd-label-yield": "年間配当利回り（%）", "divd-label-tax": "配当所得税率（%、デフォルト15.4%）", "divd-calc-btn": "配当金を計算",
+            "divd-result-title": "年間税引後配当金", "divd-gross": "年間税引前配当金", "divd-quarterly": "四半期税引後配当金", "divd-monthly": "月間税引後配当金", "divd-tax": "税額控除", "divd-calc-detail": "計算内訳",
+            "divd-disclaimer": "<em>このツールは客観的計算目的でのみ提供され、投資勧誘ではありません。</em>",
+            "divd-info-h2": "配当金計算機とは？", "divd-info-p": "配当金計算機は投資金額と配当利回りを基に予想配当収入を計算します。配当投資は株価上昇以外にも定期的なキャッシュフローを生む投資戦略です。",
+            "divd-method-h3": "📊 計算方法", "divd-tips-h3": "💡 配当投資のコツ",
+            "divd-tips-list": "<li><strong>高利回りに注意</strong>: 10%超の場合は持続可能性を必ず確認してください</li><li><strong>配当性向</strong>: 純利益対配当金の割合。50〜70%が適正水準</li><li><strong>配当成長株</strong>: 毎年配当が増える企業が長期投資に有利です</li><li><strong>税金</strong>: 一定額を超える金融所得は総合課税が適用される場合があります</li>",
+            "divd-disc-box": "<strong>⚠️ 免責事項</strong><br>この計算機は数学的ツールに過ぎず、実際の投資成果を保証するものではありません。"
+        },
+        zh: {
+            "page-title": "投资计算器合集 - 凯利公式·平均成本·复利·收益率·股息 | 免费",
+            "meta-desc": "凯利公式、平均成本（补仓）、复利、股票收益率、股息计算器一站式免费工具。适合股票·加密货币投资者。",
+            "og-title": "投资计算器合集 - 凯利公式·平均成本·复利·收益率·股息",
+            "og-desc": "股票·加密货币投资者专用免费计算器合集！凯利公式、平均成本、复利、收益率、股息计算器一站式使用。",
+            "nav-kelly": "🎯 凯利公式", "nav-average": "📊 平均成本", "nav-compound": "📈 复利", "nav-profit": "💰 收益率", "nav-dividend": "💵 股息",
+            title: "凯利公式计算器",
+            "nav-calculator": "计算器", "nav-guide": "公式指南", "nav-tips": "使用方法与注意事项",
+            description: "💰 股票、加密货币投资的科学资金管理计算器！输入胜率和收益率，获得最优投资比例。完全免费！",
+            "label-winrate": "胜率 P (%)", "label-profit": "收益率 B (%)", "label-loss": "损失率 A (%)",
+            "calculate-btn": "计算凯利比率",
+            "placeholder-winrate": "70", "placeholder-profit": "100", "placeholder-loss": "50",
+            disclaimer: "※ 本计算器按凯利公式的数学方程式原样应用。<br>在实际投资中，通常只使用计算值的25～50%。<br><br><em>此工具仅用于客观计算目的，不构成投资建议。</em>",
+            "formula-title": "什么是凯利公式？", "formula-intro": "凯利公式（Kelly Criterion）是约翰·凯利于1956年开发的数学投注策略，用于计算长期资本最大化的最优投注金额。",
+            "formula-explanation": "📊 公式说明",
+            "formula-variables": "• f = 相对于总资本的投注比率<br>• p = 胜率（获胜概率）<br>• q = 败率（失败概率 = 1-p）<br>• a = 损失率（失败时损失的比率）<br>• b = 收益率（获胜时获得的比率）",
+            "usage-method": "🎯 使用方法",
+            "usage-steps": "<li><strong>胜率(P)</strong>: 基于历史数据估算成功概率</li><li><strong>收益率(B)</strong>: 成功时获得的收益比率</li><li><strong>损失率(A)</strong>: 失败时损失的比率</li><li>计算得出的比率即为推荐投资比率</li>",
+            precautions: "⚠️ 重要注意事项",
+            "precautions-list": "<li>在实际投资中准确预测胜率非常困难</li><li>实际使用时建议只使用计算值的25-50%</li><li>需要分散投资</li><li>应考虑个人风险承受能力</li>",
+            "practical-tips": "💡 实际应用技巧",
+            "practical-tips-list": "<li>如果计算结果为25%，实际可以从6-12%开始</li><li>初期采用保守方法</li><li>绝不要用借款或生活费投资</li><li>分散到多个投资机会</li>",
+            "final-disclaimer": "<strong>⚠️ 免责声明</strong><br>本计算器仅为数学工具，不保证实际投资表现。",
+            "avg-title": "平均成本计算器（补仓）", "avg-desc": "📊 计算分批买入（补仓）时的平均买入价格。添加买入记录后进行计算。",
+            "avg-label-price": "买入价（元）", "avg-label-qty": "数量", "avg-add-row": "+ 添加买入记录", "avg-calc-btn": "计算平均成本",
+            "avg-result-title": "新平均买入价", "avg-qty-label": "总持有数量", "avg-invest-label": "总投资金额", "avg-calc-detail": "计算明细",
+            "avg-disclaimer": "<em>此工具仅用于客观计算目的，不构成投资建议。</em>",
+            "avg-info-h2": "平均成本（补仓）计算器是什么？", "avg-info-p": "平均成本计算器帮助您计算分批买入时的平均购买价格。当价格下跌时，通过补仓来降低平均成本，是常见的投资策略。",
+            "avg-formula-h3": "📊 公式说明", "avg-warning-h3": "⚠️ 补仓注意事项",
+            "avg-warning-list": "<li><strong>亏损扩大风险</strong>: 若价格持续下跌，追加投资也会产生亏损</li><li><strong>集中风险</strong>: 单一标的持仓过重会失去分散投资效果</li><li><strong>基本面确认</strong>: 不要仅因价格便宜就追加买入，应重新确认公司价值</li><li><strong>设置止损</strong>: 补仓前必须设好止损标准</li>",
+            "avg-disc-box": "<strong>⚠️ 免责声明</strong><br>本计算器仅为数学工具，不保证实际投资成果。",
+            "comp-title": "复利计算器（一次性·定投）", "comp-desc": "📈 计算一次性投资或每月定投的复利收益。输入金额、收益率和期限。",
+            "comp-mode-lump": "一次性投资", "comp-mode-dca": "每月定投",
+            "comp-label-principal": "本金（元）", "comp-label-initial": "初始投资（元，可选）", "comp-label-monthly": "每月投入（元）", "comp-label-rate": "年化收益率（%）", "comp-label-years": "投资期限（年）", "comp-calc-btn": "计算复利",
+            "comp-result-title": "最终金额", "comp-total-input": "总投入", "comp-total-profit": "总收益", "comp-profit-rate": "收益率", "comp-multiplier": "本金倍数", "comp-yearly-h4": "逐年增长",
+            "comp-disclaimer": "<em>此工具仅用于客观计算目的，不构成投资建议。</em>",
+            "comp-info-h2": "复利计算器是什么？", "comp-info-p": "复利是指本金产生利息，利息再产生利息的滚雪球方式。随着时间推移，收益呈指数级增长。",
+            "comp-formula-h3": "📊 公式说明", "comp-rule72-h3": "💡 72法则", "comp-rule72-p": "72 ÷ 年化收益率 = 本金翻倍所需年数。例：年化10% → 约7.2年翻倍",
+            "comp-disc-box": "<strong>⚠️ 免责声明</strong><br>本计算器仅为数学工具，不保证实际投资成果。",
+            "prof-title": "股票收益率计算器", "prof-desc": "💰 输入买入价、卖出价和手续费，计算实际收益和收益率。",
+            "prof-label-buy": "买入价（元）", "prof-label-sell": "卖出价（元）", "prof-label-qty": "数量（股）", "prof-label-fee": "手续费率（%，买+卖合计）", "prof-calc-btn": "计算收益率",
+            "prof-result-title": "收益率", "prof-invested": "投资金额", "prof-net": "净收益", "prof-fee": "手续费合计", "prof-breakeven": "盈亏平衡价", "prof-calc-detail": "计算明细",
+            "prof-disclaimer": "<em>此工具仅用于客观计算目的，不构成投资建议。</em>",
+            "prof-info-h2": "股票收益率计算器是什么？", "prof-info-p": "根据买入价和卖出价计算实际收益和收益率。考虑券商手续费才能准确了解实际损益。",
+            "prof-method-h3": "📊 计算方法", "prof-fee-h3": "💡 手续费参考",
+            "prof-fee-list": "<li>韩国股票：证券交易税0.18~0.20% + 券商手续费0.015~0.05%</li><li>美国股票：因券商而异（通常$0或少量固定费用）</li><li>加密货币：因交易所而异，通常0.05~0.1% maker/taker</li>",
+            "prof-disc-box": "<strong>⚠️ 免责声明</strong><br>本计算器仅为数学工具，不保证实际投资成果。",
+            "divd-title": "股息计算器（税后）", "divd-desc": "💵 根据投资金额和股息率计算年度/季度/月度预期股息。",
+            "divd-label-invest": "投资金额（元）", "divd-label-yield": "年化股息率（%）", "divd-label-tax": "股息税率（%，默认15.4%）", "divd-calc-btn": "计算股息",
+            "divd-result-title": "年度税后股息", "divd-gross": "年度税前股息", "divd-quarterly": "季度税后股息", "divd-monthly": "月度税后股息", "divd-tax": "扣税金额", "divd-calc-detail": "计算明细",
+            "divd-disclaimer": "<em>此工具仅用于客观计算目的，不构成投资建议。</em>",
+            "divd-info-h2": "股息计算器是什么？", "divd-info-p": "股息计算器根据投资金额和股息率估算预期股息收入。股息投资是除资本增值外，创造定期现金流的投资策略。",
+            "divd-method-h3": "📊 计算方法", "divd-tips-h3": "💡 股息投资技巧",
+            "divd-tips-list": "<li><strong>高股息率注意</strong>: 超过10%时必须确认可持续性</li><li><strong>派息率</strong>: 净利润派息比例50~70%为适当水平</li><li><strong>股息增长股</strong>: 每年增加股息的公司更适合长期持有</li><li><strong>税收</strong>: 金融收入超过一定金额可能适用综合税率，请咨询税务专业人士</li>",
+            "divd-disc-box": "<strong>⚠️ 免责声明</strong><br>本计算器仅为数学工具，不保证实际投资成果。"
+        }
+    };
+
+    var _htmlKeys = {
+        'disclaimer':1,'formula-variables':1,'usage-steps':1,'precautions-list':1,'practical-tips-list':1,'final-disclaimer':1,
+        'avg-disclaimer':1,'avg-warning-list':1,'avg-disc-box':1,
+        'comp-disclaimer':1,'comp-disc-box':1,
+        'prof-disclaimer':1,'prof-fee-list':1,'prof-disc-box':1,
+        'divd-disclaimer':1,'divd-tips-list':1,'divd-disc-box':1
+    };
+
+    function changeLanguage(lang) {
+        currentLang = lang;
+        var texts = translations[lang];
+        if (!texts) return;
+
+        // HTML lang attribute & SEO meta
+        var langMap = { ko:'ko', en:'en', ja:'ja', zh:'zh-CN' };
+        document.documentElement.lang = langMap[lang] || lang;
+        if (texts['page-title']) document.title = texts['page-title'];
+        var m = document.querySelector('meta[name="description"]');
+        if (m && texts['meta-desc']) m.setAttribute('content', texts['meta-desc']);
+        var ogT = document.querySelector('meta[property="og:title"]');
+        if (ogT && texts['og-title']) ogT.setAttribute('content', texts['og-title']);
+        var ogD = document.querySelector('meta[property="og:description"]');
+        if (ogD && texts['og-desc']) ogD.setAttribute('content', texts['og-desc']);
+
+        // Kelly title (special ID)
+        if (texts.title) document.getElementById('kellyTitle').textContent = texts.title;
+
+        // All data-text-key elements
+        document.querySelectorAll('[data-text-key]').forEach(function(el) {
+            var key = el.getAttribute('data-text-key');
+            if (!texts[key]) return;
+            if (_htmlKeys[key]) { el.innerHTML = texts[key]; }
+            else { el.textContent = texts[key]; }
+        });
+
+        // Kelly placeholders
+        document.querySelectorAll('[data-placeholder-key]').forEach(function(el) {
+            var key = el.getAttribute('data-placeholder-key');
+            if (texts[key]) el.placeholder = texts[key];
+        });
+
+        // Dynamic buy row labels
+        document.querySelectorAll('#buyRows .row-price-label').forEach(function(el) {
+            if (texts['avg-label-price']) el.textContent = texts['avg-label-price'];
+        });
+        document.querySelectorAll('#buyRows .row-qty-label').forEach(function(el) {
+            if (texts['avg-label-qty']) el.textContent = texts['avg-label-qty'];
+        });
+    }
+
+    document.getElementById('languageSelect').addEventListener('change', function(e) {
+        changeLanguage(e.target.value);
+        updateStaticExtraLabels();
+    });
+
+    // ===== KELLY CALCULATOR =====
+    const RESULT_TEXTS = {
+        fractionalLabel: "Fractional Kelly",
+        capitalLabel: "총 자본 (선택)",
+        recommendedRatio: "추천 투자 비율",
+        fullKellyLabel: "Full Kelly",
+        appliedLabel: "적용 비율",
+        breakEvenLabel: "손익분기 승률",
+        amountLabel: "추천 투자금액",
+        leverageWarning: "⚠️ 레버리지 필요 - 계산된 비율이 100%를 초과합니다."
+    };
+
+    function getSelectedFraction() {
+        var btn = document.querySelector('.fraction-btn.active');
+        var val = btn ? parseFloat(btn.dataset.fraction) : 1;
+        return isFinite(val) ? val : 1;
+    }
+
+    function updateStaticExtraLabels() {
+        var frac = (getSelectedFraction() * 100).toFixed(0);
+        document.getElementById('fractionLabel').textContent = RESULT_TEXTS.fractionalLabel;
+        document.getElementById('capitalLabel').textContent = RESULT_TEXTS.capitalLabel;
+        document.getElementById('breakEvenLabel').textContent = RESULT_TEXTS.breakEvenLabel;
+        document.getElementById('amountLabel').textContent = RESULT_TEXTS.amountLabel;
+        var titleEl = document.getElementById('kellyResultTitle');
+        if (titleEl) titleEl.textContent = RESULT_TEXTS.recommendedRatio + ' (' + frac + '% Kelly)';
+    }
+
+    document.querySelectorAll('.fraction-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.fraction-btn').forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+            updateStaticExtraLabels();
+            if (!document.getElementById('kellyResultSection').classList.contains('hidden')) {
+                calculateKelly();
+            }
+        });
+    });
+
+    document.getElementById('kellyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        calculateKelly();
+    });
+
+    function calculateKelly() {
+        var p_in = parseFloat(document.getElementById('winRate').value);
+        var b_in = parseFloat(document.getElementById('profitRate').value);
+        var a_in = parseFloat(document.getElementById('lossRate').value);
+        var capRaw = document.getElementById('capitalAmount').value.trim();
+        var cap = capRaw === '' ? null : parseFloat(capRaw);
+
+        if (isNaN(p_in) || isNaN(b_in) || isNaN(a_in)) { alert('모든 필드에 유효한 숫자를 입력해주세요.'); return; }
+        if (p_in < 0 || p_in > 100) { alert('승률은 0~100 사이여야 합니다.'); return; }
+        if (b_in <= 0) { alert('순수익률은 0보다 커야 합니다.'); return; }
+        if (a_in <= 0 || a_in > 100) { alert('손실률은 0~100 사이여야 합니다.'); return; }
+        if (capRaw !== '' && (isNaN(cap) || cap < 0)) { alert('총 자본은 0 이상이어야 합니다.'); return; }
+
+        var p = p_in / 100, q = 1 - p, b = b_in / 100, a = a_in / 100;
+        var fullKellyF = Math.max(0, (p / a) - (q / b));
+        var frac = getSelectedFraction();
+        var adjF = fullKellyF * frac;
+        var kellyPct = adjF * 100;
+        var fullPct = fullKellyF * 100;
+        var breakEven = (a / (a + b)) * 100;
+        var recAmt = cap === null ? null : cap * adjF;
+
+        var sec = document.getElementById('kellyResultSection');
+        sec.classList.remove('hidden');
+        document.getElementById('kellyResultTitle').textContent = RESULT_TEXTS.recommendedRatio + ' (' + (frac*100).toFixed(0) + '% Kelly)';
+        document.getElementById('kellyResultValue').textContent = kellyPct.toFixed(2) + '%';
+        document.getElementById('kellyResultMeta').textContent = RESULT_TEXTS.fullKellyLabel + ': ' + fullPct.toFixed(2) + '% | ' + RESULT_TEXTS.appliedLabel + ': ' + (frac*100).toFixed(0) + '%';
+        document.getElementById('breakEvenLabel').textContent = RESULT_TEXTS.breakEvenLabel;
+        document.getElementById('breakEvenWinRate').textContent = breakEven.toFixed(2) + '%';
+        document.getElementById('amountLabel').textContent = RESULT_TEXTS.amountLabel;
+
+        if (recAmt === null) {
+            document.getElementById('amountCard').classList.add('hidden');
+        } else {
+            document.getElementById('amountCard').classList.remove('hidden');
+            document.getElementById('recommendedAmount').textContent = fmt(Math.round(recAmt)) + '원';
+        }
+
+        document.getElementById('kellyProcessValues').innerHTML =
+            'p = ' + (p*100).toFixed(2) + '% = ' + p.toFixed(4) + '<br>' +
+            'q = ' + (q*100).toFixed(2) + '% = ' + q.toFixed(4) + '<br>' +
+            'a = ' + (a*100).toFixed(2) + '% = ' + a.toFixed(4) + '<br>' +
+            'b = ' + (b*100).toFixed(2) + '% = ' + b.toFixed(4) + '<br>' +
+            'Full Kelly f* = ' + fullKellyF.toFixed(4) + ' (' + fullPct.toFixed(2) + '%)<br>' +
+            'Applied f = f* × ' + frac.toFixed(2) + ' = ' + adjF.toFixed(4) + ' (' + kellyPct.toFixed(2) + '%)<br>' +
+            'Break-even p0 = a / (a+b) = ' + breakEven.toFixed(2) + '%';
+
+        var warn = document.getElementById('leverageWarning');
+        warn.textContent = RESULT_TEXTS.leverageWarning;
+        warn.classList.toggle('hidden', adjF <= 1);
+
+        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('winRate').addEventListener('input', function(e) { if (parseFloat(e.target.value) > 100) e.target.value = 100; });
+    document.getElementById('lossRate').addEventListener('input', function(e) { if (parseFloat(e.target.value) > 100) e.target.value = 100; });
+
+    document.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && document.activeElement.tagName === 'INPUT') {
+            var page = document.querySelector('.page:not(.hidden)');
+            if (page && page.id === 'page-kelly') calculateKelly();
+        }
+    });
+
+    // ===== 평단가 CALCULATOR =====
+    function addBuyRow() {
+        var rows = document.getElementById('buyRows');
+        var idx = rows.children.length + 1;
+        var texts = translations[currentLang] || translations['ko'];
+        var priceLabel = texts['avg-label-price'] || '매수가 (원)';
+        var qtyLabel = texts['avg-label-qty'] || '수량';
+        var div = document.createElement('div');
+        div.className = 'buy-row';
+        div.innerHTML =
+            '<div><label class="row-price-label">' + idx + '. ' + priceLabel + '</label>' +
+            '<input type="number" class="buy-price" placeholder="50000" min="0" step="0.01"></div>' +
+            '<div><label class="row-qty-label">' + qtyLabel + '</label>' +
+            '<input type="number" class="buy-qty" placeholder="10" min="0" step="0.01"></div>' +
+            '<button type="button" class="remove-row-btn">✕</button>';
+        rows.appendChild(div);
+    }
+
+    function updateRowLabels() {
+        var texts = translations[currentLang] || translations['ko'];
+        var priceLabel = texts['avg-label-price'] || '매수가 (원)';
+        document.querySelectorAll('#buyRows .buy-row').forEach(function(row, i) {
+            var lbl = row.querySelector('.row-price-label');
+            if (lbl) lbl.textContent = (i + 1) + '. ' + priceLabel;
+        });
+    }
+
+    document.getElementById('buyRows').addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-row-btn')) {
+            if (document.getElementById('buyRows').children.length > 1) {
+                e.target.closest('.buy-row').remove();
+                updateRowLabels();
+            }
+        }
+    });
+
+    document.getElementById('addRowBtn').addEventListener('click', function() {
+        addBuyRow();
+    });
+
+    document.getElementById('averageForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var prices = Array.from(document.querySelectorAll('.buy-price')).map(function(i) { return parseFloat(i.value); });
+        var qtys = Array.from(document.querySelectorAll('.buy-qty')).map(function(i) { return parseFloat(i.value); });
+
+        if (prices.some(isNaN) || qtys.some(isNaN) || prices.some(function(v) { return v <= 0; }) || qtys.some(function(v) { return v <= 0; })) {
+            alert('모든 매수가와 수량을 입력해주세요.'); return;
+        }
+
+        var totalInvest = prices.reduce(function(sum, p, i) { return sum + p * qtys[i]; }, 0);
+        var totalQty = qtys.reduce(function(sum, q) { return sum + q; }, 0);
+        var avgPrice = totalInvest / totalQty;
+
+        var sec = document.getElementById('averageResultSection');
+        sec.classList.remove('hidden');
+        document.getElementById('averageResultValue').textContent = fmt(avgPrice.toFixed(2)) + '원';
+        document.getElementById('avgTotalQty').textContent = fmt(totalQty) + '주';
+        document.getElementById('avgTotalInvest').textContent = fmt(Math.round(totalInvest)) + '원';
+
+        var proc = '';
+        prices.forEach(function(p, i) {
+            proc += (i+1) + '번: ' + fmt(p) + '원 × ' + fmt(qtys[i]) + '주 = ' + fmt(Math.round(p * qtys[i])) + '원<br>';
+        });
+        proc += '───────────────────────<br>';
+        proc += '총 투자금 ' + fmt(Math.round(totalInvest)) + '원 ÷ 총 수량 ' + fmt(totalQty) + '주 = <strong>' + fmt(avgPrice.toFixed(2)) + '원</strong>';
+        document.getElementById('averageProcessValues').innerHTML = proc;
+        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // ===== 복리 CALCULATOR =====
+    document.querySelectorAll('.mode-tab').forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.mode-tab').forEach(function(t) { t.classList.remove('active'); });
+            this.classList.add('active');
+            var mode = this.dataset.mode;
+            document.getElementById('lumpSection').classList.toggle('hidden', mode !== 'lump');
+            document.getElementById('dcaSection').classList.toggle('hidden', mode !== 'dca');
+        });
+    });
+
+    document.getElementById('compoundForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var rate = parseFloat(document.getElementById('compoundRate').value);
+        var years = parseInt(document.getElementById('compoundYears').value);
+        var mode = document.querySelector('.mode-tab.active').dataset.mode;
+
+        if (isNaN(rate) || isNaN(years) || rate < 0 || years < 1) { alert('수익률과 투자 기간을 올바르게 입력해주세요.'); return; }
+
+        var r = rate / 100;
+        var totalInput, finalAmount;
+
+        if (mode === 'lump') {
+            var principal = parseFloat(document.getElementById('compoundPrincipal').value);
+            if (isNaN(principal) || principal <= 0) { alert('원금을 입력해주세요.'); return; }
+            finalAmount = principal * Math.pow(1 + r, years);
+            totalInput = principal;
+        } else {
+            var initial = parseFloat(document.getElementById('compoundInitial').value) || 0;
+            var monthly = parseFloat(document.getElementById('compoundMonthly').value);
+            if (isNaN(monthly) || monthly <= 0) { alert('월 납입금을 입력해주세요.'); return; }
+            var mr = r / 12, months = years * 12;
+            var fvInit = initial * Math.pow(1 + mr, months);
+            var fvMonthly = monthly * (Math.pow(1 + mr, months) - 1) / mr * (1 + mr);
+            finalAmount = fvInit + fvMonthly;
+            totalInput = initial + monthly * months;
+        }
+
+        var totalProfit = finalAmount - totalInput;
+        var profitRate = (totalProfit / totalInput) * 100;
+        var multiplier = finalAmount / totalInput;
+
+        var sec = document.getElementById('compoundResultSection');
+        sec.classList.remove('hidden');
+        document.getElementById('compoundResultValue').textContent = fmt(Math.round(finalAmount)) + '원';
+        document.getElementById('compoundTotalInput').textContent = fmt(Math.round(totalInput)) + '원';
+        document.getElementById('compoundTotalProfit').textContent = fmt(Math.round(totalProfit)) + '원';
+        document.getElementById('compoundProfitRate').textContent = profitRate.toFixed(1) + '%';
+        document.getElementById('compoundMultiplier').textContent = multiplier.toFixed(2) + '배';
+
+        var proc = '';
+        var showEvery = years <= 20 ? 1 : (years <= 40 ? 5 : 10);
+        for (var y = showEvery; y <= years; y += showEvery) {
+            var amt;
+            if (mode === 'lump') {
+                amt = parseFloat(document.getElementById('compoundPrincipal').value) * Math.pow(1 + r, y);
+            } else {
+                var init2 = parseFloat(document.getElementById('compoundInitial').value) || 0;
+                var mon2 = parseFloat(document.getElementById('compoundMonthly').value);
+                var mr2 = r / 12, m2 = y * 12;
+                amt = init2 * Math.pow(1 + mr2, m2) + mon2 * (Math.pow(1 + mr2, m2) - 1) / mr2 * (1 + mr2);
+            }
+            proc += y + '년 후: ' + fmt(Math.round(amt)) + '원<br>';
+        }
+        document.getElementById('compoundProcessValues').innerHTML = proc;
+        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // ===== 수익률 CALCULATOR =====
+    document.getElementById('profitForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var buyPrice = parseFloat(document.getElementById('buyPrice').value);
+        var sellPrice = parseFloat(document.getElementById('sellPrice').value);
+        var qty = parseFloat(document.getElementById('stockQty').value);
+        var feeRate = parseFloat(document.getElementById('feeRate').value) || 0;
+
+        if (isNaN(buyPrice) || isNaN(sellPrice) || isNaN(qty) || buyPrice <= 0 || qty <= 0) {
+            alert('매수가, 매도가, 수량을 입력해주세요.'); return;
+        }
+
+        var invested = buyPrice * qty;
+        var returned = sellPrice * qty;
+        var fee = (invested + returned) * feeRate / 100;
+        var netProfit = returned - invested - fee;
+        var profitPct = (netProfit / invested) * 100;
+        var breakEvenPrice = buyPrice * (1 + feeRate / 100);
+
+        var sec = document.getElementById('profitResultSection');
+        sec.classList.remove('hidden');
+
+        var resEl = document.getElementById('profitResultValue');
+        resEl.textContent = (profitPct >= 0 ? '+' : '') + profitPct.toFixed(2) + '%';
+        resEl.className = 'result-value ' + (profitPct >= 0 ? 'positive' : 'negative');
+
+        var netEl = document.getElementById('profitNet');
+        netEl.textContent = (netProfit >= 0 ? '+' : '') + fmt(Math.round(netProfit)) + '원';
+        netEl.className = 'result-extra-value ' + (netProfit >= 0 ? 'positive' : 'negative');
+
+        document.getElementById('profitInvested').textContent = fmt(Math.round(invested)) + '원';
+        document.getElementById('profitFee').textContent = fmt(Math.round(fee)) + '원';
+        document.getElementById('profitBreakEven').textContent = fmt(breakEvenPrice.toFixed(0)) + '원';
+
+        document.getElementById('profitProcessValues').innerHTML =
+            '매수금액: ' + fmt(buyPrice) + '원 × ' + fmt(qty) + '주 = ' + fmt(Math.round(invested)) + '원<br>' +
+            '매도금액: ' + fmt(sellPrice) + '원 × ' + fmt(qty) + '주 = ' + fmt(Math.round(returned)) + '원<br>' +
+            '수수료: (' + fmt(Math.round(invested)) + ' + ' + fmt(Math.round(returned)) + ') × ' + feeRate + '% = ' + fmt(Math.round(fee)) + '원<br>' +
+            '순이익: ' + fmt(Math.round(returned)) + ' - ' + fmt(Math.round(invested)) + ' - ' + fmt(Math.round(fee)) + ' = ' + fmt(Math.round(netProfit)) + '원<br>' +
+            '수익률: ' + fmt(Math.round(netProfit)) + ' ÷ ' + fmt(Math.round(invested)) + ' × 100 = ' + profitPct.toFixed(2) + '%';
+
+        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // ===== 배당금 CALCULATOR =====
+    document.getElementById('dividendForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var investment = parseFloat(document.getElementById('divInvestment').value);
+        var divYield = parseFloat(document.getElementById('divYield').value);
+        var taxRate = parseFloat(document.getElementById('divTaxRate').value);
+        if (isNaN(taxRate) || taxRate < 0) taxRate = 0;
+
+        if (isNaN(investment) || isNaN(divYield) || investment <= 0 || divYield <= 0) {
+            alert('투자금액과 배당수익률을 입력해주세요.'); return;
+        }
+
+        var annualGross = investment * divYield / 100;
+        var taxAmt = annualGross * taxRate / 100;
+        var annualNet = annualGross - taxAmt;
+
+        var sec = document.getElementById('dividendResultSection');
+        sec.classList.remove('hidden');
+        document.getElementById('dividendResultValue').textContent = fmt(Math.round(annualNet)) + '원';
+        document.getElementById('divAnnualGross').textContent = fmt(Math.round(annualGross)) + '원';
+        document.getElementById('divQuarterly').textContent = fmt(Math.round(annualNet / 4)) + '원';
+        document.getElementById('divMonthly').textContent = fmt(Math.round(annualNet / 12)) + '원';
+        document.getElementById('divTax').textContent = fmt(Math.round(taxAmt)) + '원';
+
+        document.getElementById('dividendProcessValues').innerHTML =
+            '연간 세전 배당금: ' + fmt(Math.round(investment)) + '원 × ' + divYield + '% = ' + fmt(Math.round(annualGross)) + '원<br>' +
+            '배당소득세: ' + fmt(Math.round(annualGross)) + '원 × ' + taxRate + '% = ' + fmt(Math.round(taxAmt)) + '원<br>' +
+            '연간 세후 배당금: ' + fmt(Math.round(annualGross)) + ' - ' + fmt(Math.round(taxAmt)) + ' = ' + fmt(Math.round(annualNet)) + '원<br>' +
+            '분기 세후 배당금: ' + fmt(Math.round(annualNet)) + ' ÷ 4 = ' + fmt(Math.round(annualNet / 4)) + '원<br>' +
+            '월 세후 배당금: ' + fmt(Math.round(annualNet)) + ' ÷ 12 = ' + fmt(Math.round(annualNet / 12)) + '원';
+
+        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    // ===== INIT =====
+    addBuyRow();
+    addBuyRow();
+    updateStaticExtraLabels();
+
+    // AdSense init
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</body>
+</html>

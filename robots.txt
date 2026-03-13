@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /naverfc8f4d9686d04108971b997d23fd7391.html
+Allow: /
+
+Sitemap: https://www.kellycalc.com/sitemap.xml
