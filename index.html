@@ -203,9 +203,6 @@
         }
 
         /* ===== FRACTION BUTTONS ===== */
-        .fraction-selector { margin-top: 8px; }
-        .fraction-label { display: block; margin-bottom: 8px; font-weight: 500; color: #1e40af; }
-        .fraction-buttons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
         .fraction-btn {
             padding: 12px 10px;
             border: 2px solid #3b82f6;
@@ -365,6 +362,8 @@
 
         .hidden { display: none; }
 
+
+
         /* ===== INFO SECTION ===== */
         .info-section {
             margin-top: 40px; padding: 32px;
@@ -431,7 +430,6 @@
             .result-section { padding: 16px; }
             .info-section { padding: 16px; margin-top: 32px; }
             .info-section h2 { font-size: 18px; }
-            .fraction-buttons { grid-template-columns: 1fr; }
             .result-extra-grid { grid-template-columns: 1fr; }
             .buy-row { grid-template-columns: 1fr 1fr; }
             .buy-row .remove-row-btn { grid-column: span 2; padding: 10px; }
@@ -514,14 +512,6 @@
                             <label for="capitalAmount" id="capitalLabel">총 자본 (선택)</label>
                             <input type="number" id="capitalAmount" placeholder="1000000" min="0" step="0.01">
                         </div>
-                        <div class="input-group fraction-selector">
-                            <span class="fraction-label" id="fractionLabel">Fractional Kelly</span>
-                            <div class="fraction-buttons">
-                                <button type="button" class="fraction-btn active" data-fraction="1">100%</button>
-                                <button type="button" class="fraction-btn" data-fraction="0.5">50%</button>
-                                <button type="button" class="fraction-btn" data-fraction="0.25">25%</button>
-                            </div>
-                        </div>
                         <button type="submit" class="calculate-btn" data-text-key="calculate-btn">켈리 비율 계산</button>
                     </form>
 
@@ -546,6 +536,7 @@
                         <div id="leverageWarning" class="leverage-warning hidden"></div>
                     </div>
                 </div>
+
 
                 <div class="disclaimer" data-text-key="disclaimer">
                     <strong>※ 본 계산기는 켈리 공식의 수학식 그대로를 적용합니다.</strong><br>
@@ -1012,7 +1003,7 @@
               "applicationCategory": "FinanceApplication",
               "operatingSystem": "Any",
               "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" },
-              "featureList": ["켈리 공식 계산", "Fractional Kelly 지원", "손익분기 승률 계산", "4개 언어 지원"]
+              "featureList": ["켈리 공식 계산", "손익분기 승률 계산", "4개 언어 지원"]
             }
           },
           {
@@ -1425,42 +1416,20 @@
 
     // ===== KELLY CALCULATOR =====
     const RESULT_TEXTS = {
-        fractionalLabel: "Fractional Kelly",
         capitalLabel: "총 자본 (선택)",
         recommendedRatio: "추천 투자 비율",
-        fullKellyLabel: "Full Kelly",
-        appliedLabel: "적용 비율",
         breakEvenLabel: "손익분기 승률",
         amountLabel: "추천 투자금액",
         leverageWarning: "⚠️ 레버리지 필요 - 계산된 비율이 100%를 초과합니다."
     };
 
-    function getSelectedFraction() {
-        var btn = document.querySelector('.fraction-btn.active');
-        var val = btn ? parseFloat(btn.dataset.fraction) : 1;
-        return isFinite(val) ? val : 1;
-    }
-
     function updateStaticExtraLabels() {
-        var frac = (getSelectedFraction() * 100).toFixed(0);
-        document.getElementById('fractionLabel').textContent = RESULT_TEXTS.fractionalLabel;
         document.getElementById('capitalLabel').textContent = RESULT_TEXTS.capitalLabel;
         document.getElementById('breakEvenLabel').textContent = RESULT_TEXTS.breakEvenLabel;
         document.getElementById('amountLabel').textContent = RESULT_TEXTS.amountLabel;
         var titleEl = document.getElementById('kellyResultTitle');
-        if (titleEl) titleEl.textContent = RESULT_TEXTS.recommendedRatio + ' (' + frac + '% Kelly)';
+        if (titleEl) titleEl.textContent = RESULT_TEXTS.recommendedRatio;
     }
-
-    document.querySelectorAll('.fraction-btn').forEach(function(btn) {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.fraction-btn').forEach(function(b) { b.classList.remove('active'); });
-            this.classList.add('active');
-            updateStaticExtraLabels();
-            if (!document.getElementById('kellyResultSection').classList.contains('hidden')) {
-                calculateKelly();
-            }
-        });
-    });
 
     document.getElementById('kellyForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -1481,19 +1450,16 @@
         if (capRaw !== '' && (isNaN(cap) || cap < 0)) { alert('총 자본은 0 이상이어야 합니다.'); return; }
 
         var p = p_in / 100, q = 1 - p, b = b_in / 100, a = a_in / 100;
-        var fullKellyF = Math.max(0, (p / a) - (q / b));
-        var frac = getSelectedFraction();
-        var adjF = fullKellyF * frac;
-        var kellyPct = adjF * 100;
-        var fullPct = fullKellyF * 100;
+        var kellyF = Math.max(0, (p / a) - (q / b));
+        var kellyPct = kellyF * 100;
         var breakEven = (a / (a + b)) * 100;
-        var recAmt = cap === null ? null : cap * adjF;
+        var recAmt = cap === null ? null : cap * kellyF;
 
         var sec = document.getElementById('kellyResultSection');
         sec.classList.remove('hidden');
-        document.getElementById('kellyResultTitle').textContent = RESULT_TEXTS.recommendedRatio + ' (' + (frac*100).toFixed(0) + '% Kelly)';
+        document.getElementById('kellyResultTitle').textContent = RESULT_TEXTS.recommendedRatio;
         document.getElementById('kellyResultValue').textContent = kellyPct.toFixed(2) + '%';
-        document.getElementById('kellyResultMeta').textContent = RESULT_TEXTS.fullKellyLabel + ': ' + fullPct.toFixed(2) + '% | ' + RESULT_TEXTS.appliedLabel + ': ' + (frac*100).toFixed(0) + '%';
+        document.getElementById('kellyResultMeta').textContent = '';
         document.getElementById('breakEvenLabel').textContent = RESULT_TEXTS.breakEvenLabel;
         document.getElementById('breakEvenWinRate').textContent = breakEven.toFixed(2) + '%';
         document.getElementById('amountLabel').textContent = RESULT_TEXTS.amountLabel;
@@ -1510,13 +1476,12 @@
             'q = ' + (q*100).toFixed(2) + '% = ' + q.toFixed(4) + '<br>' +
             'a = ' + (a*100).toFixed(2) + '% = ' + a.toFixed(4) + '<br>' +
             'b = ' + (b*100).toFixed(2) + '% = ' + b.toFixed(4) + '<br>' +
-            'Full Kelly f* = ' + fullKellyF.toFixed(4) + ' (' + fullPct.toFixed(2) + '%)<br>' +
-            'Applied f = f* × ' + frac.toFixed(2) + ' = ' + adjF.toFixed(4) + ' (' + kellyPct.toFixed(2) + '%)<br>' +
-            'Break-even p0 = a / (a+b) = ' + breakEven.toFixed(2) + '%';
+            'f* = p/a - q/b = ' + kellyF.toFixed(4) + ' (' + kellyPct.toFixed(2) + '%)<br>' +
+            '손익분기 승률 = a / (a+b) = ' + breakEven.toFixed(2) + '%';
 
         var warn = document.getElementById('leverageWarning');
         warn.textContent = RESULT_TEXTS.leverageWarning;
-        warn.classList.toggle('hidden', adjF <= 1);
+        warn.classList.toggle('hidden', kellyF <= 1);
 
         sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
